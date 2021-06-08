@@ -2,15 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant Apps Starter Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
 </head>
 <body>
-<h1>Restaurant Apps Starter Project</h1>
-<p>Hallo coders! Anda berhasil menjalankan starter project.</p>
-<p>Jangan lupa untuk menggunakan salah satu gambar yang berada pada ./images/heros sebagai background hero elemen</p>
-<img src="./images/heros/hero-image_1.jpg" width="450" alt="">
-<img src="./images/heros/hero-image_2.jpg" width="450" alt="">
-<img src="./images/heros/hero-image_3.jpg" width="450" alt="">
-<img src="./images/heros/hero-image_4.jpg" width="450" alt="">
+    <div class="container__header">
+        <header class="header">
+            <div class="header__inner">
+                <h1 id="header-title" class="header__title"></h1>
+            </div>
+            <a id="menu" class="header__menu">☰</a>
+        </header>
+
+        <nav id="drawer" class="nav">
+            <ul id="menu-list" class="nav__list"></ul>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <div class="hero__inner">
+            <h1 class="hero__title">Bangun Karirmu Sebagai Developer Profesional</h1>
+            <p class="hero__tagline">Jadilah tuan rumah di negeri sendiri dengan belajar langsung dari para inovator dan
+                developer expert</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="content">
+            <div class="container__restaurant">
+                <h1 class="restaurant__label">Explore Restaurant</h1>
+                <div id="restaurant-list" class="restaurants">
+                    <!-- List data restaurant -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p id="footer"></p>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,22 @@
+{
+    "menus": [
+        {
+            "id": "6c7bqjgi84kcowlqdz",
+            "label": "Home",
+            "link": "",
+            "target": ""
+        },
+        {
+            "id": "ljx8i0qu2uckcowlqdz",
+            "label": "Favorite",
+            "link": "#",
+            "target": ""
+        },
+        {
+            "id": "fe8bbxoazddkcowlqdz",
+            "label": "About Us",
+            "link": "https://www.linkedin.com/in/rizki-darmawan-018034124/",
+            "target": "_blank"
+        }
+    ]
+}
