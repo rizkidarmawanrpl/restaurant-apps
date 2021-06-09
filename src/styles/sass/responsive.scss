@@ -1,16 +1,22 @@
+@media screen and (max-width: 425px) {
+    .restaurant-item__thumbnail {
+        height: 150px;
+    }
+}
+
 @media screen and (max-width: 499px) {
     .nav {
+        display: none;
         z-index: 10;
         background-color: #fff;
-        width: 300px;
-        position: absolute;
+        width: 100%;
 
         /* This transform move the drawer off canvas */
         -webkit-transform: translate(-300px, 0);
         transform: translate(-300px, 0);
 
         /* Optionally, we animate the drawer */
-        transition: transform -.3s ease;
+        transition: transform 0.3s ease;
     }
 
     .open {
@@ -20,12 +26,19 @@
 
     .nav__item {
         display: list-item;
-        border-bottom: 1px solid #E0E0E0;
+        border-bottom: 1px solid var(--theme-color-yellow);
         width: 100%;
-        text-align: left;
+        text-align: center;
+        list-style: none;
+        margin-left: 0;
+    }
+
+    .nav-display {
+        display: block;
     }
 
     .container__header {
+        position: relative;
         grid-template-columns: 100%;
     }
 
@@ -38,6 +51,14 @@
         top: 0;
         transform: unset;
         margin: 10px auto;
+    }
+
+    .hero__inner {
+        padding: 0 20px;
+    }
+
+    .container__skip-link:focus {
+        top: 105px;
     }
 }
 
@@ -68,6 +89,17 @@
         grid-column-gap: 10px;
         grid-row-gap: 16px;
     }
+
+    .restaurant-item__thumbnail {
+        height: 200px;
+    }
+
+    .tips {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 16px;
+    }
 }
 
 @media screen and (min-width: 800px) {
@@ -81,6 +113,18 @@
     .restaurants {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .tips {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 100px);
+        grid-auto-flow: column;
+    }
+
+    .tips-item:first-child {
+        grid-column: 4 / 2;
+        grid-row: 2 / 2;
     }
 }
 

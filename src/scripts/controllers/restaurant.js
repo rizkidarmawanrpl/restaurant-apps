@@ -9,9 +9,11 @@ class Restaurant {
         data_restaurant.map(item => {
             html += `
                     <article class="restaurant-item">
-                        <img class="restaurant-item__thumbnail" src="${item.pictureId}" alt="${item.name}">
+                        <div class="restaurant-item__thumbnail">
+                            <img src="${item.pictureId}" alt="${item.name}">
+                        </div>
                         <div class="restaurant-item__lokasi">
-                            <p>${item.city}</p>
+                            <p>Kota ${item.city}</p>
                         </div>
                         <div class="restaurant-item__content">
                             <h2 class="restaurant-item__rating">Rating: <span>${item.rating}</span></h2>

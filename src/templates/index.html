@@ -6,12 +6,19 @@
     <title></title>
 </head>
 <body>
+    <a href="#maincontent" class="container__skip-link">
+        <span class="skip-link">Menuju ke konten</span>
+    </a>
+
     <div class="container__header">
-        <header class="header">
+        <header class="header"> 
             <div class="header__inner">
                 <h1 id="header-title" class="header__title"></h1>
             </div>
-            <a id="menu" class="header__menu">☰</a>
+            <a href="#" id="menu" class="header__menu" data-toggle="false">
+                <span class="icon-default">☰</span>
+                <span class="icon-close">⛌</span>
+            </a>
         </header>
 
         <nav id="drawer" class="nav">
@@ -21,18 +28,98 @@
 
     <div class="hero">
         <div class="hero__inner">
-            <h1 class="hero__title">Bangun Karirmu Sebagai Developer Profesional</h1>
-            <p class="hero__tagline">Jadilah tuan rumah di negeri sendiri dengan belajar langsung dari para inovator dan
-                developer expert</p>
+            <h1 class="hero__title"><strong>Menu Makanan 4 Sehat, 5 Sempurna</strong></h1>
+            <p class="hero__tagline">Hidup sehat dengan makan makanan pokok, lauk pauk, sayur-sayuran, buah-buahan, dan lengkapi dengan meminum susu.</p>
         </div>
     </div>
 
-    <main>
+    <main id="maincontent">
         <section class="content">
             <div class="container__restaurant">
                 <h1 class="restaurant__label">Explore Restaurant</h1>
                 <div id="restaurant-list" class="restaurants">
                     <!-- List data restaurant -->
+                </div>
+            </div>
+
+            <div class="container__tips">
+                <h1 class="tips__label">Tips 45 Foods</h1>
+                <div id="tips-list" class="tips">
+                    <article class="tips-item">
+                        <div class="tips-item__thumbnail">
+                            <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/41" alt="${item.name}">
+                        </div>
+                        <div class="tips-item__lokasi">
+                            <p>Kota ${item.city}</p>
+                        </div>
+                        <div class="tips-item__content">
+                            <h2 class="tips-item__rating">Rating: <span>${item.rating}</span></h2>
+                            <h1 class="tips-item__title">
+                                <a href="#">${item.name}</a>
+                            </h1>
+                            <p class="tips-item__description">${item.description.replace(/^(.{350}[^\s]*).*/, "$1")}...</p>
+                        </div>
+                    </article>
+                    <article class="tips-item">
+                        <div class="tips-item__thumbnail">
+                            <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/41" alt="${item.name}">
+                        </div>
+                        <div class="tips-item__lokasi">
+                            <p>Kota ${item.city}</p>
+                        </div>
+                        <div class="tips-item__content">
+                            <h2 class="tips-item__rating">Rating: <span>${item.rating}</span></h2>
+                            <h1 class="tips-item__title">
+                                <a href="#">${item.name}</a>
+                            </h1>
+                            <p class="tips-item__description">${item.description.replace(/^(.{350}[^\s]*).*/, "$1")}...</p>
+                        </div>
+                    </article>
+                    <article class="tips-item">
+                        <div class="tips-item__thumbnail">
+                            <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/41" alt="${item.name}">
+                        </div>
+                        <div class="tips-item__lokasi">
+                            <p>Kota ${item.city}</p>
+                        </div>
+                        <div class="tips-item__content">
+                            <h2 class="tips-item__rating">Rating: <span>${item.rating}</span></h2>
+                            <h1 class="tips-item__title">
+                                <a href="#">${item.name}</a>
+                            </h1>
+                            <p class="tips-item__description">${item.description.replace(/^(.{350}[^\s]*).*/, "$1")}...</p>
+                        </div>
+                    </article>
+                    <article class="tips-item">
+                        <div class="tips-item__thumbnail">
+                            <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/41" alt="${item.name}">
+                        </div>
+                        <div class="tips-item__lokasi">
+                            <p>Kota ${item.city}</p>
+                        </div>
+                        <div class="tips-item__content">
+                            <h2 class="tips-item__rating">Rating: <span>${item.rating}</span></h2>
+                            <h1 class="tips-item__title">
+                                <a href="#">${item.name}</a>
+                            </h1>
+                            <p class="tips-item__description">${item.description.replace(/^(.{350}[^\s]*).*/, "$1")}...</p>
+                        </div>
+                    </article>
+                    <article class="tips-item">
+                        <div class="tips-item__thumbnail">
+                            <img src="https://dicoding-restaurant-api.el.r.appspot.com/images/medium/41" alt="${item.name}">
+                        </div>
+                        <div class="tips-item__lokasi">
+                            <p>Kota ${item.city}</p>
+                        </div>
+                        <div class="tips-item__content">
+                            <h2 class="tips-item__rating">Rating: <span>${item.rating}</span></h2>
+                            <h1 class="tips-item__title">
+                                <a href="#">${item.name}</a>
+                            </h1>
+                            <p class="tips-item__description">${item.description.replace(/^(.{350}[^\s]*).*/, "$1")}...</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
