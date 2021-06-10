@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -47,6 +48,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
+      favicon: path.resolve(__dirname, 'src/public/images/icon/dicoding.jpeg'),
       filename: 'index.html',
     }),
     new CopyWebpackPlugin({
@@ -57,5 +59,6 @@ module.exports = {
         },
       ],
     }),
+    new CleanWebpackPlugin(),
   ],
 };

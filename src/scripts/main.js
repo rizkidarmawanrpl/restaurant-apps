@@ -83,6 +83,9 @@ const main = () => {
 
     // Get list restaurant
     Restaurant.getDataRestaurant();
+
+    // Get list viral foods
+    Restaurant.getMakananTerviral();
 };
 
 export default main;

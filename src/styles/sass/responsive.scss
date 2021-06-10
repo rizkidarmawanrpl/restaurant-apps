@@ -1,5 +1,5 @@
 @media screen and (max-width: 425px) {
-    .restaurant-item__thumbnail {
+    .restaurant-item__thumbnail, .viral-food-item__thumbnail {
         height: 150px;
     }
 }
@@ -86,19 +86,19 @@
     .restaurants {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-column-gap: 10px;
-        grid-row-gap: 16px;
+        grid-column-gap: 25px;
+        grid-row-gap: 25px;
     }
 
     .restaurant-item__thumbnail {
         height: 200px;
     }
 
-    .tips {
+    .viral-food {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-column-gap: 10px;
-        grid-row-gap: 16px;
+        grid-column-gap: 25px;
+        grid-row-gap: 25px;
     }
 }
 
@@ -115,16 +115,34 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .tips {
+    .viral-food {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 100px);
+        grid-template-rows: repeat(2, 1fr);
         grid-auto-flow: column;
     }
 
-    .tips-item:first-child {
-        grid-column: 4 / 2;
-        grid-row: 2 / 2;
+    .viral-food-item:first-child {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+
+        .viral-food-item__thumbnail {
+            height: 300px;
+        }
+
+        .viral-food-item__title {
+            font-size: 3em;
+        }
+
+        .viral-food-item__resto {
+            font-size: 2em;
+        }
+    }
+
+    .viral-food-item__description {
+        //background-color: aquamarine;
+        height: 20px;
+        overflow: hidden;
     }
 }
 

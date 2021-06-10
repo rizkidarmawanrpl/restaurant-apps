@@ -51,6 +51,25 @@ body {
     display: block;
 }
 
+.btn {
+    padding: 10px 15px;
+    color: var(--theme-color-white);
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--theme-color-turquoise);
+
+    &:hover {
+        opacity: 0.9;
+        transition: 0.5s ease;
+    }
+}
+
 /*
  * Header
  */
@@ -243,7 +262,7 @@ main {
     margin: 32px auto auto;
     text-align: left;
     display: grid;
-    grid-row-gap: 16px;
+    grid-row-gap: 25px;
 }
 
 /*
@@ -256,6 +275,12 @@ main {
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+
+    &:hover {
+        -webkit-transform: translate(0, -10px);
+        transform: translate(0, -10px);
+        transition: transform 0.5s ease;
+    }
 }
 
 .restaurant-item__lokasi {
@@ -337,21 +362,23 @@ main {
     line-height: 1.5em;
 }
 
-
-
-
+.restaurant__footer, .viral-food__footer {
+    margin-top: 20px;
+    padding: 20px;
+    opacity: 1;
+}
 
 /*
- * Tips
+ * Viral foods
  */
 
- .container__tips {
+ .container__viral-food {
     width: 100%;
     margin: 60px auto;
     text-align: center;
 }
 
-.tips__label {
+.viral-food__label {
     font-size: 32px;
     font-weight: lighter;
 
@@ -363,26 +390,32 @@ main {
     }
 }
 
-.tips {
+.viral-food {
     margin: 32px auto auto;
     text-align: left;
     display: grid;
-    grid-row-gap: 16px;
+    grid-row-gap: 25px;
 }
 
 /*
- * Tips item
+ * Viral food item
  */
 
-.tips-item {
+.viral-food-item {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+
+    &:hover {
+        -webkit-transform: translate(0, -10px);
+        transform: translate(0, -10px);
+        transition: transform 0.5s ease;
+    }
 }
 
-.tips-item__lokasi {
+.viral-food-item__lokasi {
     position: absolute;
     top: 20px;
     width: 150px;
@@ -400,13 +433,13 @@ main {
     }
 }
 
-.tips-item__content {
+.viral-food-item__content {
     padding: 16px;
 }
 
-.tips-item__thumbnail {
+.viral-food-item__thumbnail {
     width: 100%;
-    height: 240px;
+    height: 130px;
     overflow: hidden;
     border-radius: 10px;
 
@@ -415,25 +448,24 @@ main {
     }
 }
 
-.tips-item__date {
+.viral-food-item__date {
     font-size: 10px;
     text-transform: uppercase;
     color: #999;
 }
 
-.tips-item__date__author {
+.tiviral-foodps-item__date__author {
     color: red;
     text-decoration: none;
 }
 
-.tips-item__title, .tips-item__rating {
+.viral-food-item__title, .viral-food-item__resto {
     font-weight: 500;
     transition: 0.3s opacity;
 }
 
-.tips-item__title {
+.viral-food-item__title {
     font-size: 16px;
-    margin-top: 16px;
 
     &:hover {
         opacity: 0.5;
@@ -446,8 +478,9 @@ main {
     }
 }
 
-.tips-item__rating {
+.viral-food-item__resto {
     font-size: 14px;
+    margin-top: 16px;
 
     span {
         font-weight: lighter;
@@ -455,17 +488,11 @@ main {
     }
 }
 
-.tips-item__description {
+.viral-food-item__description {
     margin-top: 16px;
     font-size: 12px;
     line-height: 1.5em;
 }
-
-
-
-
-
-
 
 
 /*
