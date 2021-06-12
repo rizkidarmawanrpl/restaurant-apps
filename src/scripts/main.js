@@ -24,13 +24,13 @@ const main = () => {
     const icon_default = document.querySelector('.icon-default');
     const icon_close = document.querySelector('.icon-close');
 
+    const btnMenuToggle = () => {
+        icon_default.classList.toggle('icon-default-event');
+        icon_close.classList.toggle('icon-close-event');
+    };
+
     btnMenu.addEventListener('click', function(event) {
         const menu_toggle = btnMenu.dataset.toggle;
-
-        const btnMenuToggle = () => {
-            icon_default.classList.toggle('icon-default-event');
-            icon_close.classList.toggle('icon-close-event');
-        };
 
         if(menu_toggle == 'false') {
             drawer.classList.toggle('nav-display');
@@ -61,6 +61,8 @@ const main = () => {
     main.addEventListener('click', function() {
         drawer.classList.remove('open');
 
+        btnMenuToggle();
+
         setTimeout(function() {
             btnMenu.dataset.toggle = false;
 
@@ -71,6 +73,8 @@ const main = () => {
     hero.addEventListener('click', function() {
         drawer.classList.remove('open');
 
+        btnMenuToggle();
+        
         setTimeout(function() {
             btnMenu.dataset.toggle = false;
 
