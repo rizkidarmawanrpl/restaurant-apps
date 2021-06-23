@@ -526,3 +526,31 @@ footer {
     }
   }
 }
+
+/*
+ * Detail
+ */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  width: 100%;
+  margin-top: 55px;
+  background-color: #f0f3f5;
+
+  ul {
+    width: 100%;
+    padding: 0 32px;
+    margin: 0 auto;
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

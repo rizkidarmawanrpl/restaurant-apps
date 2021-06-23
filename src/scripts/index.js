@@ -6,7 +6,22 @@ import '../styles/sass/responsive.scss';
 import App from './views/app';
 
 const app = new App({
-  button: document.querySelector('#menu'),
+  metatitle: document.querySelector('title'),
+  sitetitle: document.querySelector('#header-title'),
+  footer: document.querySelector('#footer'),
+  menu: document.querySelector('#menu-list'),
+  buttonMenu: document.querySelector('#menu'),
+  iconMenuDefault: document.querySelector('.icon-default'),
+  iconMenuClose: document.querySelector('.icon-close'),
   drawer: document.querySelector('#drawer'),
-  content: document.querySelector('#mainContent'),
+  hero: document.querySelector('.hero'),
+  content: document.querySelector('#maincontent'),
+});
+
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
 });
