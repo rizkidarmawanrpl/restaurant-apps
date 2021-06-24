@@ -1,3 +1,13 @@
+@media screen and (max-width: 320px) {
+    /*
+     * Detail
+     */
+
+    .breadcrumb {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 425px) {
     .restaurant-item__thumbnail, .viral-food-item__thumbnail {
         height: 150px;
@@ -60,6 +70,68 @@
     .container__skip-link:focus {
         top: 105px;
     }
+
+    /*
+     * Detail
+     */
+
+    .breadcrumb {
+        margin-top: 0;
+    }
+
+    .container__restaurant-detail {
+        grid-template-columns: 1fr;
+        grid-column-gap: 0;
+        margin: 0 0 20px;
+    }
+
+    .content-detail {
+        padding: 0;
+    }
+
+    .restaurant-detail__content, .restaurant-detail__address, .menu-utama, .customer-reviews {
+        padding: 32px;
+    }
+
+    .restaurant-detail__content {
+        padding-bottom: 0;
+    }
+
+    .restaurant-detail__thumbnail {
+        border-radius: 0;
+    }
+
+    .container__restaurant-favorite {
+        grid-template-columns: 1fr auto;
+    }
+
+    .restaurant-favorite__item {
+            align-self: center;
+
+        &:first-child {
+            grid-column: 1 / 3;
+            margin-bottom: 0.8em;
+        }
+
+        &:nth-child(3) {
+            grid-row: 2 / 2;
+            text-align: right;
+        }
+    }
+
+    .restaurant-favorite__title {
+        font-size: 1.2em;
+    }
+    
+    .restaurant-favorite__subtitle {
+        font-size: 1em;
+    }
+}
+
+@media screen and (min-width: 425px) {
+    .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (min-width: 500px) {
@@ -80,6 +152,10 @@
     .restaurant-item__description {
         font-size: 14px;
     }
+
+    .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media screen and (min-width: 700px) {
@@ -99,6 +175,13 @@
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 25px;
         grid-row-gap: 25px;
+    }
+
+    .restaurant-detail__thumbnail {
+        img {
+            width: unset;
+            height: 100%;
+        }
     }
 }
 
@@ -143,6 +226,17 @@
         //background-color: aquamarine;
         height: 20px;
         overflow: hidden;
+    }
+
+    .restaurant-detail__thumbnail {
+        img {
+            width: 100%;
+            height: unset;
+        }
+    }
+
+    .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
