@@ -2,11 +2,12 @@
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import ViralFood from '../../data/MAKANAN_TERVIRAL.json';
 import { createRestaurantItemTemplate, createViralFoodTemplate } from '../templates/template-creator';
+import { hideBreadcrumb, showHero } from '../../utils/fun-helper';
 
 const Home = {
   async render() {
-    const hero = document.querySelector('.breadcrumb');
-    hero.classList.add('hidden');
+    showHero();
+    hideBreadcrumb();
 
     return `
         <section class="content">
@@ -16,7 +17,7 @@ const Home = {
                     <!-- List data restaurant -->
                 </div>
                 <div class="restaurant__footer">
-                    <a href="#" class="btn btn-primary">Tampilin lebih banyak resto</a>
+                    <a href="#/restaurant-list" class="btn btn-primary">Tampilin lebih banyak resto</a>
                 </div>
             </div>
 
@@ -26,7 +27,7 @@ const Home = {
                     <!-- List data viral foods -->
                 </div>
                 <div class="viral-food__footer">
-                    <a href="#" class="btn btn-primary">Lihat semua yang viral</a>
+                    <a href="#/viral-food-list" class="btn btn-primary">Lihat semua yang viral</a>
                 </div>
             </div>
         </section>

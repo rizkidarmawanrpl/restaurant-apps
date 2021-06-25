@@ -1,4 +1,5 @@
 import CONFIG from '../../globals/config';
+import { initialName } from '../../utils/fun-helper';
 
 const createMenuTemplate = (menu) => `
     <li class="nav__item"><a href="${menu.link}" target="${menu.target}">${menu.label}</a></li>
@@ -38,9 +39,50 @@ const createViralFoodTemplate = (food) => `
 `;
 
 const createRestaurantDetailTemplate = (restaurant) => `
-    ${restaurant.name}
-    <hr>
-    ${restaurant.description}
+    <div class="restaurant-detail__thumbnail">
+        <img src="${CONFIG.BASE_MEDIUM_IMAGE_URL + restaurant.pictureId}">
+    </div>
+    <div class="restaurant-detail__content">
+        <h1 class="restaurant-detail__title">${restaurant.name}</h1>
+        <div class="restaurant-detail__category">
+            ${restaurant.categories.map((categorie) => `<span>${categorie.name}</span>`).join('')}
+        </div>
+        <h2 class="restaurant-detail__rating">
+            <span>Rating</span> <i class="fa fa-star"></i> ${restaurant.rating}
+        </h2>
+        <p class="restaurant-detail__description">
+            ${restaurant.description}    
+        </p>
+    </div>
+    <div class="restaurant-detail__address">
+        <h1 class="restaurant-detail__address-title">Kota</h1>
+        <p>${restaurant.city}</p>
+        <h1 class="restaurant-detail__address-title">Alamat</h1>
+        <p>${restaurant.address}</p>
+    </div>
+`;
+
+const createRestaurantDetailMenuFoodTemplate = (food) => `
+    <div class="menu-utama__food-item">
+        <h1 class="menu-utama__food-item__title">${food.name}</h1>
+    </div>
+`;
+
+const createtRestaurantDetailMenuDrinkTemplate = (drink) => `
+    <div class="menu-utama__drink-item">
+        <h1 class="menu-utama__drink-item__title">${drink.name}</h1>
+    </div>
+`;
+
+const createCustomerReviewTemplate = (customerReview) => `
+    <div class="customer-review__item">
+        <div class="customer-review__item-thumbnail">
+            <h2>${initialName(customerReview.name)}</h2>
+        </div>
+        <h1 class="customer-review__item-name">${customerReview.name}</h1>
+        <p class="customer-review__item-review">${customerReview.review}</p>
+        <p class="customer-review__item-date">${customerReview.date}</p>
+    </div>
 `;
 
 export {
@@ -48,4 +90,7 @@ export {
   createRestaurantItemTemplate,
   createViralFoodTemplate,
   createRestaurantDetailTemplate,
+  createRestaurantDetailMenuFoodTemplate,
+  createtRestaurantDetailMenuDrinkTemplate,
+  createCustomerReviewTemplate,
 };
