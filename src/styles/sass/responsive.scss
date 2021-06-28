@@ -222,6 +222,30 @@
         }
     }
 
+    .viral-food-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        grid-auto-flow: unset;
+
+        .viral-food-item:first-child {
+            grid-column: unset;
+            grid-row: unset;
+
+            .viral-food-item__thumbnail {
+                height: 130px;
+            }
+            
+            .viral-food-item__title {
+                font-size: 16px;
+            }
+
+            .viral-food-item__resto {
+                font-size: 14px;
+            }
+        }
+    }
+
     .viral-food-item__description {
         //background-color: aquamarine;
         height: 20px;

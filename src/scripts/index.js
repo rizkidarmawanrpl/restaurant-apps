@@ -4,6 +4,7 @@ import '../styles/sass/theme.scss';
 import '../styles/sass/main.scss';
 import '../styles/sass/responsive.scss';
 import App from './views/app';
+import swRegister from './utils/sw-register';
 
 const app = new App({
   metatitle: document.querySelector('title'),
@@ -24,4 +25,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  swRegister();
 });

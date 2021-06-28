@@ -1,7 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -24,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        //exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           {
             loader: 'style-loader',
@@ -34,15 +35,15 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: [
           'file-loader',
-        ]
-      }
+        ],
+      },
     ],
   },
   plugins: [
@@ -60,5 +61,8 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.resolve(__dirname, 'src/scripts/sw.js'),
+    }),
   ],
 };

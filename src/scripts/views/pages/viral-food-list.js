@@ -10,7 +10,7 @@ const ViralFoodList = {
         <section class="content">
             <div class="container__viral-food">
                 <h1 class="viral-food__label">45's Foods Terviral</h1>
-                <div id="viral-food-list" class="viral-food">
+                <div id="viral-food-list" class="viral-food viral-food-list">
                     <!-- List data viral foods -->
                 </div>
             </div>
