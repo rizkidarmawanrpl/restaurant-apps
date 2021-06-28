@@ -4,8 +4,6 @@ import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/
 
 const ViralFoodList = {
   async render() {
-    hideHero();
-
     return `
         <section class="content">
             <div class="container__viral-food">
@@ -21,6 +19,8 @@ const ViralFoodList = {
   async afterRender() {
     const viralFoods = ViralFood.data;
     const viralFoodsContainer = document.querySelector('#viral-food-list');
+
+    hideHero();
 
     showBreadcrumb([
       dataBreadcrumbRestaurant,

@@ -4,8 +4,6 @@ import { hideHero, dataBreadcrumbHome, showBreadcrumb } from '../../utils/fun-he
 
 const RestaurantList = {
   async render() {
-    hideHero();
-
     return `
             <section class="content">
                 <div class="container__restaurant">
@@ -21,6 +19,8 @@ const RestaurantList = {
   async afterRender() {
     const restaurants = await RestaurantDbSource.listRestaurants();
     const restaurantsContainer = document.querySelector('#restaurant-list');
+
+    hideHero();
 
     showBreadcrumb([
       dataBreadcrumbHome,

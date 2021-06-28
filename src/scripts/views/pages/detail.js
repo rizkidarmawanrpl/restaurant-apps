@@ -11,8 +11,6 @@ import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/
 
 const Detail = {
   async render() {
-    hideHero();
-
     return `
       <section class="content-detail">
         <div id="restaurant-detail" class="container__restaurant-detail"></div>
@@ -59,11 +57,12 @@ const Detail = {
     const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
     const { name, customerReviews } = restaurantDetail;
     const { foods, drinks } = restaurantDetail.menus;
-    // const breadcrumbActive = document.querySelector('.breadcrumb__active');
     const restaurantDetailContainer = document.querySelector('#restaurant-detail');
     const menuFoodContainer = document.querySelector('#menu-food');
     const menuDrinkContainer = document.querySelector('#menu-drink');
     const customerReviewContainer = document.querySelector('#customer-review');
+
+    hideHero();
 
     showBreadcrumb([
       dataBreadcrumbRestaurant,
@@ -73,7 +72,6 @@ const Detail = {
       },
     ]);
 
-    // breadcrumbActive.innerHTML = name;
     restaurantDetailContainer.innerHTML = createRestaurantDetailTemplate(restaurantDetail);
     foods.forEach((food) => {
       menuFoodContainer.innerHTML += createRestaurantDetailMenuFoodTemplate(food);
