@@ -8,6 +8,7 @@ import {
   createCustomerReviewTemplate,
 } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/fun-helper';
+import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
 
 const Detail = {
   async render() {
@@ -15,19 +16,7 @@ const Detail = {
       <section class="content-detail">
         <div id="restaurant-detail" class="container__restaurant-detail"></div>
 
-        <div class="container__restaurant-favorite">
-            <div class="restaurant-favorite__item">
-                <h1 class="restaurant-favorite__title">Kamu Suka Banget Sama Resto Ini Ya... Ciee Jadi Langganan Setia ;)</h1>
-            </div>
-            <div class="restaurant-favorite__item">
-                <h2 class="restaurant-favorite__subtitle">Yuk, jadiin resto ini resto favorit kamu</h1>
-            </div>
-            <div class="restaurant-favorite__item">
-                <div class="restaurant-favorite__button">
-                    <button class="btn btn-primary"><i class="fa fa-heart liked"></i> &nbsp; Suka</button>
-                </div>
-            </div>
-        </div>
+        <div id="btn-favorite-restaurant" class="container__restaurant-favorite"></div>
 
         <div class="container__menu-utama">
             <h1 class="menu-utama__label">Menus</h1>
@@ -55,8 +44,10 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
-    const { name, customerReviews } = restaurantDetail;
-    const { foods, drinks } = restaurantDetail.menus;
+    const {
+      id, name, description, city, pictureId, rating, menus, customerReviews,
+    } = restaurantDetail;
+    const { foods, drinks } = menus;
     const restaurantDetailContainer = document.querySelector('#restaurant-detail');
     const menuFoodContainer = document.querySelector('#menu-food');
     const menuDrinkContainer = document.querySelector('#menu-drink');
@@ -76,11 +67,25 @@ const Detail = {
     foods.forEach((food) => {
       menuFoodContainer.innerHTML += createRestaurantDetailMenuFoodTemplate(food);
     });
+
     drinks.forEach((drink) => {
       menuDrinkContainer.innerHTML += createtRestaurantDetailMenuDrinkTemplate(drink);
     });
+
     customerReviews.forEach((customerReview) => {
       customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
+    });
+
+    FavoriteRestaurantButtonInitiator.init({
+      favoriteButtonContainer: document.querySelector('#btn-favorite-restaurant'),
+      restaurant: {
+        id,
+        name,
+        description,
+        city,
+        pictureId,
+        rating,
+      },
     });
   },
 };

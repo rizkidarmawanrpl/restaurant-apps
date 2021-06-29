@@ -274,6 +274,17 @@ main {
   text-align: left;
   display: grid;
   grid-row-gap: 25px;
+
+  .no-data {
+    display: block;
+    width: 100%;
+    border: var(--theme-color-red) 2px solid;
+    padding: 25px;
+    grid-column: 1 / 4;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    line-height: 24px;
+  }
 }
 
 /*
