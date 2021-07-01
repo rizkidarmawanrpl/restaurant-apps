@@ -14,6 +14,5 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(CacheHelper.revalidateCache(event.request));
-  console.log(event.request);
+  if (event.request.method !== 'POST') event.respondWith(CacheHelper.revalidateCache(event.request));
 });

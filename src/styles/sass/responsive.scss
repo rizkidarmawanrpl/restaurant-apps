@@ -89,7 +89,7 @@
         padding: 0;
     }
 
-    .restaurant-detail__content, .restaurant-detail__address, .menu-utama, .customer-reviews {
+    .restaurant-detail__content, .restaurant-detail__address, .menu-utama, .customer-reviews, .container__add-review {
         padding: 32px;
     }
 
@@ -262,10 +262,14 @@
     .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .form-horizontal {
+        width: 500px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
-    main, .breadcrumb ul {
+    .content, .content-detail, .breadcrumb ul, .container__add-review {
         max-width: 1200px;
     }
 }

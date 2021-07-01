@@ -117,6 +117,8 @@ const createFavoritedButtonTemplate = () => `
     </div>
 `;
 
+const createNotificationTemplate = () => '<div id="notification" class="snackbar">Some text some message..</div>';
+
 export {
   createMenuTemplate,
   createRestaurantItemTemplate,
@@ -127,4 +129,5 @@ export {
   createCustomerReviewTemplate,
   createFavoriteButtonTemplate,
   createFavoritedButtonTemplate,
+  createNotificationTemplate,
 };

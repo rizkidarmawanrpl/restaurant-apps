@@ -58,6 +58,13 @@ const showBreadcrumb = (dataBreadcrumb) => {
   });
 };
 
+const showNotification = (teks) => {
+  const notificationContainer = document.getElementById('notification');
+  notificationContainer.innerHTML = teks;
+  notificationContainer.classList.toggle('show');
+  setTimeout(() => { notificationContainer.classList.remove('show'); }, 2900);
+};
+
 export {
   initialName,
   hideBreadcrumb,
@@ -66,4 +73,5 @@ export {
   showHero,
   dataBreadcrumbHome,
   dataBreadcrumbRestaurant,
+  showNotification,
 };

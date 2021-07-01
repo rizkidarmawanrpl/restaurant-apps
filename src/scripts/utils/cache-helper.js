@@ -36,6 +36,8 @@ const CacheHelper = {
       return response;
     }
 
+    console.log(response);
+
     await this._addCache(request);
     return response;
   },
