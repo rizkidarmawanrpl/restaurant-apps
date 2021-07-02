@@ -19,9 +19,9 @@ const DrawerInitiator = {
       this._closeDrawer(event, button, drawer);
     });
 
-    content.addEventListener('click', (event) => {
-      this._buttonMenuToggle(iconDefault, iconClose);
-      this._closeDrawer(event, button, drawer);
+    content.addEventListener('click', () => {
+      // this._buttonMenuToggle(iconDefault, iconClose);
+      // this._closeDrawer(event, button, drawer);
     });
   },
 

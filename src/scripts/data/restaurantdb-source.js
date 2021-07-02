@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import API_ENPOINT from '../globals/api-endpoint';
 import CONFIG from '../globals/config';
 

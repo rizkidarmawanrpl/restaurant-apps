@@ -30,7 +30,7 @@ const createViralFoodTemplate = (food) => `
         </div>
         <div class="viral-food-item__content">
             <h1 class="viral-food-item__title">
-                <a href="#">${food.name}</a>
+                <p>${food.name}</p>
             </h1>
             <h2 class="viral-food-item__resto">Resto: <span>${food.restaurant}</span></h2>
             <p class="viral-food-item__description">${food.description}</p>
@@ -87,7 +87,7 @@ const createCustomerReviewTemplate = (customerReview) => `
 
 const createFavoriteButtonTemplate = () => `
     <div class="restaurant-favorite__item">
-        <h1 class="restaurant-favorite__title">Kamu Suka Banget Sama Resto Ini Ya...? Ciee Mau Jadi Langganan Setia ;)</h1>
+        <h1 class="restaurant-favorite__title">Kamu Suka Banget Sama Resto Ini Ya...? Ciee Mau Jadi Langganan Setia.</h1>
     </div>
     <div class="restaurant-favorite__item">
         <h2 class="restaurant-favorite__subtitle">Yuk, jadiin resto ini resto favorit kamu</h1>
@@ -119,6 +119,214 @@ const createFavoritedButtonTemplate = () => `
 
 const createNotificationTemplate = () => '<div id="notification" class="snackbar">Some text some message..</div>';
 
+const createPlaceholderRestaurantTemplate = () => `
+    <article class="restaurant-item">
+        <div class="restaurant-item__thumbnail">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-picture"></div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-item__content">
+            <div class="restaurant-item__rating">
+                <div class="ph-item">
+                    <div class="ph-col-12">
+                        <div class="ph-row">
+                            <div class="ph-col-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-item__title">
+                <div class="ph-item">
+                    <div class="ph-col-12">
+                        <div class="ph-row">
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-item__description">
+                <div class="ph-item">
+                    <div class="ph-col-12">
+                        <div class="ph-row">
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-12"></div>
+                            <div class="ph-col-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+`;
+
+const createPlaceholderDetailTemplate = () => `
+    <div class="restaurant-detail__thumbnail">
+        <div class="ph-item">
+            <div class="ph-col-12">
+                <div class="ph-picture"></div>
+            </div>
+        </div>
+    </div>
+    <div class="restaurant-detail__content">
+        <div class="restaurant-detail__title">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-8 big"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-detail__category">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-2"></div>
+                        <div class="ph-col-1 empty">&nbsp;&nbsp;</div>
+                        <div class="ph-col-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-detail__rating">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-detail__description">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12"></div>
+                        <div class="ph-col-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="restaurant-detail__address">
+        <div class="restaurant-detail__address-title">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12"></div>
+                        <div class="ph-col-12 empty"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-detail__address-title">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+
+const createPlaceholderCustomerReviewTemplate = () => `
+    <div class="customer-review__item">
+        <div class="customer-review__item-thumbnail ph-avatar__thumbnail">
+            <div class="ph-item">
+                <div class="ph-avatar"></div>
+            </div>
+        </div>
+        <div class="customer-review__item-name">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-2 empty"></div>
+                        <div class="ph-col-8"></div>
+                        <div class="ph-col-2 empty"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="customer-review__item-review">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="customer-review__item-date">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-4 empty"></div>
+                        <div class="ph-col-4"></div>
+                        <div class="ph-col-4 empty"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+
+const createPlaceholderViralFoodTemplate = () => `
+    <article class="viral-food-item">
+        <div class="viral-food-item__thumbnail">
+            <div class="ph-item">
+                <div class="ph-col-12">
+                    <div class="ph-picture"></div>
+                </div>
+            </div>
+        </div>
+        <div class="viral-food-item__content">
+            <div class="viral-food-item__title">
+                <div class="ph-item">
+                    <div class="ph-col-12">
+                        <div class="ph-row">
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="viral-food-item__resto">
+                <div class="ph-item">
+                    <div class="ph-col-12">
+                        <div class="ph-row">
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-8"></div>
+                            <div class="ph-col-12 empty"></div>
+                            <div class="ph-col-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+`;
+
 export {
   createMenuTemplate,
   createRestaurantItemTemplate,
@@ -130,4 +338,8 @@ export {
   createFavoriteButtonTemplate,
   createFavoritedButtonTemplate,
   createNotificationTemplate,
+  createPlaceholderRestaurantTemplate,
+  createPlaceholderDetailTemplate,
+  createPlaceholderCustomerReviewTemplate,
+  createPlaceholderViralFoodTemplate,
 };

@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import RestaurantDbSource from '../../data/restaurantdb-source';
-import { createRestaurantItemTemplate } from '../templates/template-creator';
+import { createRestaurantItemTemplate, createPlaceholderRestaurantTemplate } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbHome, showBreadcrumb } from '../../utils/fun-helper';
 
 const RestaurantList = {
@@ -17,7 +18,6 @@ const RestaurantList = {
   },
 
   async afterRender() {
-    const restaurants = await RestaurantDbSource.listRestaurants();
     const restaurantsContainer = document.querySelector('#restaurant-list');
 
     hideHero();
@@ -30,9 +30,23 @@ const RestaurantList = {
       },
     ]);
 
-    restaurants.forEach((restaurant) => {
-      restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+    restaurantsContainer.innerHTML = createPlaceholderRestaurantTemplate();
+    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
+    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
+
+    try {
+      const restaurants = await RestaurantDbSource.listRestaurants();
+
+      setTimeout(() => {
+        restaurantsContainer.innerHTML = '';
+
+        restaurants.forEach((restaurant) => {
+          restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+        });
+      }, 2000);
+    } catch (message) {
+      console.log(message);
+    }
   },
 };
 

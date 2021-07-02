@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import ViralFood from '../../data/MAKANAN_TERVIRAL.json';
-import { createRestaurantItemTemplate, createViralFoodTemplate } from '../templates/template-creator';
+import { createRestaurantItemTemplate, createViralFoodTemplate, createPlaceholderRestaurantTemplate } from '../templates/template-creator';
 import { hideBreadcrumb, showHero } from '../../utils/fun-helper';
 
 const Home = {
@@ -35,11 +35,25 @@ const Home = {
   },
 
   async afterRender() {
-    const restaurants = await RestaurantDbSource.listRestaurants();
     const restaurantsContainer = document.querySelector('#restaurant-list');
-    restaurants.forEach((restaurant) => {
-      restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+
+    restaurantsContainer.innerHTML = createPlaceholderRestaurantTemplate();
+    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
+    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
+
+    try {
+      const restaurants = await RestaurantDbSource.listRestaurants();
+
+      setTimeout(() => {
+        restaurantsContainer.innerHTML = '';
+
+        restaurants.forEach((restaurant) => {
+          restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+        });
+      }, 2000);
+    } catch (message) {
+      console.log(message);
+    }
 
     const viralFoods = ViralFood.data;
     const viralFoodsContainer = document.querySelector('#viral-food-list');

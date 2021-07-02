@@ -497,7 +497,7 @@ main {
     color: var(--theme-color-turquoise);
   }
 
-  a {
+  a, p {
     display: inline-block;
     text-decoration: none;
     color: inherit;
@@ -793,7 +793,7 @@ footer {
   margin-bottom: 10px;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  justify-content: center;
+  // justify-content: center;
   padding: 10px 20px;
 
   &:hover {
@@ -943,6 +943,50 @@ textarea.form-control {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+}
+
+/*
+ * Placeholder custom
+ */
+
+.restaurant-item, .container__restaurant-detail, .customer-review__item, .viral-food-item {
+  .ph-item {
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    .ph-avatar {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ph-col-12 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.restaurant-item, .container__restaurant-detail {
+  .ph-picture {
+    height: 200px;
+  }
+}
+
+.customer-review__item {
+  .ph-avatar {
+    min-width: unset;
+
+    &__thumbnail {
+      background-color: transparent;
+    }
+  }
+}
+
+.viral-food-item {
+  .ph-picture {
+    height: 150px;
   }
 }
 

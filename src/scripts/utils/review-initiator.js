@@ -37,14 +37,19 @@ const ReviewInitiator = {
     if (id === '' || name === '' || review === '') {
       showNotification('Data tidak boleh dikosongkan!');
     } else {
-      const customerReviews = await RestaurantDbSource.addReview(formdata);
+      try {
+        const customerReviews = await RestaurantDbSource.addReview(formdata);
 
-      this._customerReviewContainer.innerHTML = '';
-      customerReviews.forEach((customerReview) => {
-        this._customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
-      });
+        this._customerReviewContainer.innerHTML = '';
+        customerReviews.forEach((customerReview) => {
+          this._customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
+        });
 
-      showNotification('Review kamu berhasil disimpan.');
+        showNotification('Review kamu berhasil disimpan.');
+      } catch (message) {
+        showNotification('Review gagal disimpan.');
+        console.log(message);
+      }
     }
   },
 

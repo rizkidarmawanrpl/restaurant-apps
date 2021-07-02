@@ -3,10 +3,12 @@ import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import {
   createRestaurantDetailTemplate,
-  createRestaurantDetailMenuFoodTemplate,
-  createtRestaurantDetailMenuDrinkTemplate,
+  createViralFoodTemplate,
   createCustomerReviewTemplate,
   createNotificationTemplate,
+  createPlaceholderDetailTemplate,
+  createPlaceholderCustomerReviewTemplate,
+  createPlaceholderViralFoodTemplate,
 } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/fun-helper';
 import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
@@ -25,12 +27,14 @@ const Detail = {
             <div class="menu-utama">
                 <div class="menu-utama__food">
                     <h1 class="menu-utama__title">Makanan</h1>
-                    <div id="menu-food" class="menu-utama__foods"></div>
+                    <!--<div id="menu-food" class="menu-utama__foods"></div>-->
+                    <div id="menu-food" class="viral-food viral-food-list"></div>
                 </div>
 
                 <div class="menu-utama__drink">
                     <h1 class="menu-utama__title">Minuman</h1>
-                    <div id="menu-drink" class="menu-utama__drinks"></div>
+                    <!--<div id="menu-drink" class="menu-utama__drinks"></div>-->
+                    <div id="menu-drink" class="viral-food viral-food-list"></div>
                 </div>
             </div>
         </div>
@@ -69,18 +73,6 @@ const Detail = {
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
-    const {
-      id,
-      name,
-      description,
-      city,
-      pictureId,
-      rating,
-      menus,
-      customerReviews,
-    } = restaurantDetail;
-    const { foods, drinks } = menus;
     const restaurantDetailContainer = document.querySelector('#restaurant-detail');
     const menuFoodContainer = document.querySelector('#menu-food');
     const menuDrinkContainer = document.querySelector('#menu-drink');
@@ -89,49 +81,99 @@ const Detail = {
 
     hideHero();
 
-    showBreadcrumb([
-      dataBreadcrumbRestaurant,
-      {
-        link: '',
-        label: name,
-      },
-    ]);
-
     notificationContainer.innerHTML = createNotificationTemplate();
 
-    restaurantDetailContainer.innerHTML = createRestaurantDetailTemplate(restaurantDetail);
+    restaurantDetailContainer.innerHTML = createPlaceholderDetailTemplate();
 
-    foods.forEach((food) => {
-      menuFoodContainer.innerHTML += createRestaurantDetailMenuFoodTemplate(food);
-    });
+    customerReviewContainer.innerHTML = createPlaceholderCustomerReviewTemplate();
+    customerReviewContainer.innerHTML += createPlaceholderCustomerReviewTemplate();
+    customerReviewContainer.innerHTML += createPlaceholderCustomerReviewTemplate();
+    customerReviewContainer.innerHTML += createPlaceholderCustomerReviewTemplate();
 
-    drinks.forEach((drink) => {
-      menuDrinkContainer.innerHTML += createtRestaurantDetailMenuDrinkTemplate(drink);
-    });
+    menuFoodContainer.innerHTML = createPlaceholderViralFoodTemplate();
+    menuFoodContainer.innerHTML += createPlaceholderViralFoodTemplate();
+    menuFoodContainer.innerHTML += createPlaceholderViralFoodTemplate();
+    menuFoodContainer.innerHTML += createPlaceholderViralFoodTemplate();
 
-    customerReviews.forEach((customerReview) => {
-      customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
-    });
+    menuDrinkContainer.innerHTML = createPlaceholderViralFoodTemplate();
+    menuDrinkContainer.innerHTML += createPlaceholderViralFoodTemplate();
+    menuDrinkContainer.innerHTML += createPlaceholderViralFoodTemplate();
+    menuDrinkContainer.innerHTML += createPlaceholderViralFoodTemplate();
 
-    FavoriteRestaurantButtonInitiator.init({
-      favoriteButtonContainer: document.querySelector('#btn-favorite-restaurant'),
-      restaurant: {
+    try {
+      const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
+      const {
         id,
         name,
         description,
         city,
         pictureId,
         rating,
-      },
-    });
+        menus,
+        customerReviews,
+      } = restaurantDetail;
+      const { foods, drinks } = menus;
 
-    ReviewInitiator.init({
-      id,
-      inputName: document.querySelector('[name="name"]'),
-      inputReview: document.querySelector('[name="review"]'),
-      button: document.querySelector('#button-add-review'),
-      customerReviewContainer,
-    });
+      showBreadcrumb([
+        dataBreadcrumbRestaurant,
+        {
+          link: '',
+          label: name,
+        },
+      ]);
+
+      setTimeout(() => {
+        restaurantDetailContainer.innerHTML = createRestaurantDetailTemplate(restaurantDetail);
+
+        customerReviewContainer.innerHTML = '';
+        menuFoodContainer.innerHTML = '';
+        menuDrinkContainer.innerHTML = '';
+
+        foods.forEach((food) => {
+          menuFoodContainer.innerHTML += createViralFoodTemplate({
+            pictureId: 'https://via.placeholder.com/256x150?text=Menu%20Makanan',
+            restaurant: name,
+            name: food.name,
+            description: 'Lorem ipsum dolor sit amet',
+          });
+        });
+
+        drinks.forEach((drink) => {
+          menuDrinkContainer.innerHTML += createViralFoodTemplate({
+            pictureId: 'https://via.placeholder.com/256x150?text=Menu%20Minuman',
+            restaurant: name,
+            name: drink.name,
+            description: 'Lorem ipsum dolor sit amet',
+          });
+        });
+
+        customerReviews.forEach((customerReview) => {
+          customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
+        });
+      }, 2000);
+
+      FavoriteRestaurantButtonInitiator.init({
+        favoriteButtonContainer: document.querySelector('#btn-favorite-restaurant'),
+        restaurant: {
+          id,
+          name,
+          description,
+          city,
+          pictureId,
+          rating,
+        },
+      });
+
+      ReviewInitiator.init({
+        id,
+        inputName: document.querySelector('[name="name"]'),
+        inputReview: document.querySelector('[name="review"]'),
+        button: document.querySelector('#button-add-review'),
+        customerReviewContainer,
+      });
+    } catch (message) {
+      console.log(message);
+    }
   },
 };
 
