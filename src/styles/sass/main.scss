@@ -92,7 +92,8 @@ body {
   box-sizing: border-box;
 }
 
-.header__inner {
+app-bar {
+  display: block;
   width: 100%;
   text-align: left;
   position: relative;
@@ -177,13 +178,15 @@ body {
   }
 }
 
-.nav__list {
+menu-list {
+  display: block;
   width: 100%;
   padding: 0;
   margin: 0;
 }
 
-.nav__item {
+menu-item {
+  display: inline-block;
   box-sizing: border-box;
   display: inline-block;
   width: auto;
@@ -200,6 +203,13 @@ body {
 /*
  * Jumbotron
  */
+
+hero-bar {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-top: 56px;
+}
 
 .hero {
   display: flex;
@@ -270,7 +280,7 @@ main {
   }
 }
 
-.restaurants {
+restaurant-list {
   margin: 32px auto auto;
   text-align: left;
   display: grid;
@@ -524,20 +534,21 @@ main {
  * Footer
  */
 
-footer {
+footer-bar {
+  display: block;
   background-color: var(--theme-color-turquoise);
   padding: 2em;
   width: 100%;
   text-align: center;
 
   p {
-    font-size: 14px;
-    padding: 1.3em;
-    color: var(--theme-color-white);
+      font-size: 14px;
+      padding: 1.3em;
+      color: var(--theme-color-white);
 
-    span {
+      span {
       text-transform: uppercase;
-    }
+      }
   }
 }
 
@@ -549,16 +560,16 @@ footer {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-top: 55px;
+  // margin-top: 55px;
   background-color: #f0f3f5;
 
-  ul {
+  breadcrumb-list {
     width: 100%;
     padding: 0 32px;
     margin: 0 auto;
     list-style: none;
 
-    li {
+    breadcrumb-item {
       display: inline-block;
       box-sizing: border-box;
 
@@ -570,7 +581,7 @@ footer {
         text-decoration: none;
         padding: 1.2em 0;
 
-        &.breadcrumb__active, ul span {
+        &.active {
           font-weight: lighter;
           color: var(--theme-color-black);
         }

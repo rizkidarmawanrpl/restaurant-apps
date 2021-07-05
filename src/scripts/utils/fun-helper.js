@@ -20,42 +20,28 @@ const showHero = () => {
 const dataBreadcrumbHome = {
   link: '#/',
   label: 'Home',
+  class: '',
 };
 
 const dataBreadcrumbRestaurant = {
   link: '#/restaurant-list',
   label: 'Eksplore Restaurant',
+  class: '',
 };
 
 const hideBreadcrumb = () => {
   const breadcrumb = document.querySelector('.breadcrumb');
+  const breadcrumbContainer = document.querySelector('breadcrumb-list');
   breadcrumb.classList.add('hidden');
+  breadcrumbContainer.innerHTML = '';
 };
 
 const showBreadcrumb = (dataBreadcrumb) => {
   const breadcrumb = document.querySelector('.breadcrumb');
-  const breadcrumbContainer = document.querySelector('#breadcrumbs');
+  const breadcrumbContainer = document.querySelector('breadcrumb-list');
   breadcrumb.classList.remove('hidden');
-  breadcrumbContainer.innerHTML = '';
 
-  let increment = 1;
-  let breadcrumbLink = '';
-  let breadcrumbActive = '';
-  let breadcrumbSplitter = '<span>/</span>';
-  dataBreadcrumb.forEach((data) => {
-    breadcrumbLink = `href="${data.link}"`;
-
-    if (increment === dataBreadcrumb.length) {
-      breadcrumbLink = '';
-      breadcrumbActive = 'breadcrumb__active';
-      breadcrumbSplitter = '';
-    }
-
-    breadcrumbContainer.innerHTML += `<li><a ${breadcrumbLink} class="${breadcrumbActive}">${data.label}</a></li>`;
-    breadcrumbContainer.innerHTML += breadcrumbSplitter;
-
-    increment += increment;
-  });
+  breadcrumbContainer.breadcrumbs = dataBreadcrumb;
 };
 
 const showNotification = (teks) => {

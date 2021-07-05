@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 import ViralFood from '../../data/MAKANAN_TERVIRAL.json';
 import { createViralFoodTemplate } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/fun-helper';
@@ -25,8 +26,9 @@ const ViralFoodList = {
     showBreadcrumb([
       dataBreadcrumbRestaurant,
       {
-        link: '',
+        link: 'javascript:;',
         label: 'Viral Foods',
+        class: 'active',
       },
     ]);
 

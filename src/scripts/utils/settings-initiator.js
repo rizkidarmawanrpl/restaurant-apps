@@ -8,8 +8,8 @@ const SettingsInitiator = {
     const dataSettings = DataSettings.settings;
 
     elMetatitle.innerHTML = dataSettings.sitetitle;
-    elSitetitle.innerHTML = dataSettings.title;
-    elFooter.innerHTML = dataSettings.footer;
+    elSitetitle.title = dataSettings.title;
+    elFooter.footer = dataSettings.footer;
   },
 };
 

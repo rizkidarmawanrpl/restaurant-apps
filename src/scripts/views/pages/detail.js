@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 /* eslint-disable no-console */
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
@@ -117,8 +118,9 @@ const Detail = {
       showBreadcrumb([
         dataBreadcrumbRestaurant,
         {
-          link: '',
+          link: 'javascript:;',
           label: name,
+          class: 'active',
         },
       ]);
 

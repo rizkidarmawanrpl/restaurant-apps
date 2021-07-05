@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 /* eslint-disable no-console */
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import { createRestaurantItemTemplate, createPlaceholderRestaurantTemplate } from '../templates/template-creator';
@@ -25,8 +26,9 @@ const RestaurantList = {
     showBreadcrumb([
       dataBreadcrumbHome,
       {
-        link: '',
+        link: 'javascript:;',
         label: 'Explore Restaurant',
+        class: 'active',
       },
     ]);
 

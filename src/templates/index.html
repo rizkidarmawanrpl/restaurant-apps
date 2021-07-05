@@ -19,9 +19,10 @@
 
     <div class="container__header">
         <header class="header"> 
-            <div class="header__inner">
+            <!--<div class="header__inner">
                 <h1 id="header-title" class="header__title"></h1>
-            </div>
+            </div>-->
+            <app-bar></app-bar>
             <button id="menu" class="header__menu" data-toggle="false">
                 <span class="icon-default">☰</span>
                 <span class="icon-close">⛌</span>
@@ -29,25 +30,26 @@
         </header>
 
         <nav id="drawer" class="nav">
-            <ul id="menu-list" class="nav__list"></ul>
+            <!--<ul id="menu-list" class="nav__list"></ul>-->
+            <menu-list></menu-list>
         </nav>
     </div>
 
-    <div class="hero">
+    <!-- <div class="hero">
         <div class="hero__inner">
             <h1 class="hero__title"><strong>Menu Makanan 4 Sehat, 5 Sempurna</strong></h1>
             <p class="hero__tagline">Hidup sehat dengan makan makanan pokok, lauk pauk, sayur-sayuran, buah-buahan, dan lengkapi dengan meminum susu.</p>
         </div>
-    </div>
+    </div> -->
+    <hero-bar></hero-bar>
 
     <div class="breadcrumb hidden">
-        <ul id="breadcrumbs"></ul>
+        <!-- <ul id="breadcrumbs"></ul> -->
+        <breadcrumb-list></breadcrumb-list>
     </div>
 
     <main id="maincontent"></main>
     
-    <footer>
-        <p id="footer"></p>
-    </footer>
+    <footer-bar></footer-bar>
 </body>
 </html>

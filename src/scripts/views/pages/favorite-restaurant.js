@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import { createRestaurantItemTemplate } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/fun-helper';
@@ -25,8 +26,9 @@ const FavoriteRestaurant = {
     showBreadcrumb([
       dataBreadcrumbRestaurant,
       {
-        link: '',
+        link: 'javascript:;',
         label: 'Favorited Restaurant',
+        class: 'active',
       },
     ]);
 

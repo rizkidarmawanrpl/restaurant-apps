@@ -3,19 +3,18 @@ import RestaurantDbSource from '../../data/restaurantdb-source';
 import ViralFood from '../../data/MAKANAN_TERVIRAL.json';
 import { createRestaurantItemTemplate, createViralFoodTemplate, createPlaceholderRestaurantTemplate } from '../templates/template-creator';
 import { hideBreadcrumb, showHero } from '../../utils/fun-helper';
+import '../../component/restaurant-list';
 
 const Home = {
   async render() {
-    showHero();
-    hideBreadcrumb();
-
     return `
         <section class="content">
             <div class="container__restaurant">
                 <h1 class="restaurant__label">Explore Restaurant</h1>
-                <div id="restaurant-list" class="restaurants">
-                    <!-- List data restaurant -->
-                </div>
+                <!-- <div id="restaurant-list" class="restaurants">
+                    List data restaurant
+                </div> -->
+                <restaurant-list></restaurant-list>
                 <div class="restaurant__footer">
                     <a href="#/restaurant-list" class="btn btn-primary">Tampilin lebih banyak resto</a>
                 </div>
@@ -35,24 +34,27 @@ const Home = {
   },
 
   async afterRender() {
-    const restaurantsContainer = document.querySelector('#restaurant-list');
+    const restaurantsContainer = document.querySelector('restaurant-list');
+    const renderRestaurantLoader = (count) => {
+      restaurantsContainer.loaders = count;
+    };
+    const renderRestaurantResult = (results) => {
+      restaurantsContainer.innerHTML = '';
+      restaurantsContainer.restaurants = results;
+    };
+    const fallbackRestaurantResult = (message) => {
+      restaurantsContainer.renderError(message);
+    };
 
-    restaurantsContainer.innerHTML = createPlaceholderRestaurantTemplate();
-    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
-    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
+    showHero();
+    hideBreadcrumb();
+    renderRestaurantLoader(3);
 
     try {
       const restaurants = await RestaurantDbSource.listRestaurants();
-
-      setTimeout(() => {
-        restaurantsContainer.innerHTML = '';
-
-        restaurants.forEach((restaurant) => {
-          restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
-      }, 2000);
+      renderRestaurantResult(restaurants);
     } catch (message) {
-      console.log(message);
+      fallbackRestaurantResult(message);
     }
 
     const viralFoods = ViralFood.data;

@@ -12,9 +12,11 @@ const MenuInitiator = {
     const dataMenu = DataMenu.menus;
     const elMenu = this._menu;
 
-    dataMenu.forEach((menu) => {
-      elMenu.innerHTML += createMenuTemplate(menu);
-    });
+    elMenu.menus = dataMenu;
+
+    // dataMenu.forEach((menu) => {
+    //   elMenu.innerHTML += createMenuTemplate(menu);
+    // });
   },
 };
 
