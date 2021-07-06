@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
+import '../component/favorite-restaurant-bar';
 import FavoriteRestaurantIdb from '../data/favoriterestaurant-idb';
-import { createFavoriteButtonTemplate, createFavoritedButtonTemplate } from '../views/templates/template-creator';
 
 const FavoriteRestaurantButtonInitiator = {
   async init({ favoriteButtonContainer, restaurant }) {
@@ -26,7 +26,7 @@ const FavoriteRestaurantButtonInitiator = {
   },
 
   _renderFavorite() {
-    this._favoriteButtonContainer.innerHTML = createFavoriteButtonTemplate();
+    this._favoriteButtonContainer.favorite();
 
     const favoriteButton = document.querySelector('#favorite-button');
     favoriteButton.addEventListener('click', async () => {
@@ -36,7 +36,7 @@ const FavoriteRestaurantButtonInitiator = {
   },
 
   _renderFavorited() {
-    this._favoriteButtonContainer.innerHTML = createFavoritedButtonTemplate();
+    this._favoriteButtonContainer.favorited();
 
     const favoriteButton = document.querySelector('#favorite-button');
     favoriteButton.addEventListener('click', async () => {

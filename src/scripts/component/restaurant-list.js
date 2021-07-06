@@ -16,7 +16,7 @@ class RestaurantList extends HTMLElement {
   renderLoader() {
     this.innerHTML = '';
 
-    for (let i = 0; i < this._loaders; i += 1) {
+    for (let increment = 0; increment < this._loaders; increment += 1) {
       const restaurantItemElement = document.createElement('restaurant-item');
       restaurantItemElement.renderLoader();
       this.appendChild(restaurantItemElement);
@@ -27,6 +27,10 @@ class RestaurantList extends HTMLElement {
     this.innerHTML = '';
     this.innerHTML += `<p class="no-data">${message}</p>`;
     console.log(message);
+  }
+
+  renderEmpty() {
+    this.innerHTML = '<p class="no-data">Kuy! Tambahin resto favorite kamu sekarang ...</p>';
   }
 
   render() {

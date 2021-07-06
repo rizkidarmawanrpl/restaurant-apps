@@ -1,17 +1,18 @@
 /* eslint-disable no-script-url */
 /* eslint-disable no-console */
+import '../../component/restaurant-detail';
+import '../../component/customer-review-list';
+import '../../component/customer-review-form';
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import {
-  createRestaurantDetailTemplate,
-  createViralFoodTemplate,
-  createCustomerReviewTemplate,
-  createNotificationTemplate,
-  createPlaceholderDetailTemplate,
-  createPlaceholderCustomerReviewTemplate,
-  createPlaceholderViralFoodTemplate,
-} from '../templates/template-creator';
-import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/fun-helper';
+  hideHero,
+  dataBreadcrumbRestaurant,
+  showBreadcrumb,
+  additionalFoodMenu,
+  additionalDrinkMenu,
+  showNotification,
+} from '../../utils/fun-helper';
 import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
 import ReviewInitiator from '../../utils/review-initiator';
 
@@ -19,90 +20,93 @@ const Detail = {
   async render() {
     return `
       <section class="content-detail">
-        <div id="restaurant-detail" class="container__restaurant-detail"></div>
+        <restaurant-detail></restaurant-detail>
 
-        <div id="btn-favorite-restaurant" class="container__restaurant-favorite"></div>
+        <favorite-restaurant-bar></favorite-restaurant-bar>
 
         <div class="container__menu-utama">
             <h1 class="menu-utama__label">Menus</h1>
             <div class="menu-utama">
                 <div class="menu-utama__food">
                     <h1 class="menu-utama__title">Makanan</h1>
-                    <!--<div id="menu-food" class="menu-utama__foods"></div>-->
-                    <div id="menu-food" class="viral-food viral-food-list"></div>
+                    <food-list id="menu-food" class="food-list"></food-list>
                 </div>
 
                 <div class="menu-utama__drink">
                     <h1 class="menu-utama__title">Minuman</h1>
-                    <!--<div id="menu-drink" class="menu-utama__drinks"></div>-->
-                    <div id="menu-drink" class="viral-food viral-food-list"></div>
+                    <food-list id="menu-drink" class="food-list"></food-list>
                 </div>
             </div>
         </div>
 
         <div class="container__customer-review">
             <h1 class="customer-review__label">Customer Reviews</h1>
-            <div id="customer-review" class="customer-reviews"></div>
+            <customer-review-list></customer-review-list>
         </div>
     </section>
 
-    <section class="content-form">
-      <div class="container__add-review">
-        <h1 class="add-review__title">
-          Gimana Restonya?
-          <small>Yuk, kasih review kamu ke resto ini.</small>
-        </h1>
-        <form class="form-horizontal">
-          <div class="form-item">
-            <label class="form-label">Nama</label>
-            <input type="text" name="name" class="form-control">
-          </div>
-          <div class="form-item">
-            <label class="form-label">Review</label>
-            <textarea name="review" class="form-control"></textarea>
-          </div>
-          <div class="form-item">
-            <button type="button" id="button-add-review" class="btn btn-primary"><i class="fa fa-send"></i> &nbsp; Kirim</button>
-          </div>
-        </form>
-      </div>
-    </section>
+    <customer-review-form></customer-review-form>
 
-    <div id="container__notification"></div>
+    <notification-bar></notification-bar>
     `;
   },
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurantDetailContainer = document.querySelector('#restaurant-detail');
+    const restaurantDetailContainer = document.querySelector('restaurant-detail');
     const menuFoodContainer = document.querySelector('#menu-food');
     const menuDrinkContainer = document.querySelector('#menu-drink');
-    const customerReviewContainer = document.querySelector('#customer-review');
-    const notificationContainer = document.querySelector('#container__notification');
+    const customerReviewContainer = document.querySelector('customer-review-list');
+    const renderRestaurantDetailLoader = () => {
+      restaurantDetailContainer.renderLoader();
+    };
+    const renderRestaurantDetailResult = (result) => {
+      restaurantDetailContainer.restaurant = result;
+    };
+    const fallbackRestaurantDetailResult = (message) => {
+      restaurantDetailContainer.renderError(message);
+    };
+
+    const renderAdditionalFood = (food) => {
+      menuFoodContainer.additionalFood = food;
+    };
+    const renderAdditionalDrink = (drink) => {
+      menuDrinkContainer.additionalFood = drink;
+    };
+
+    const renderFoodLoader = (count) => {
+      menuFoodContainer.loaders = count;
+    };
+    const renderFoodResult = (results) => {
+      menuFoodContainer.foods = results;
+    };
+    const renderDrinkLoader = (count) => {
+      menuDrinkContainer.loaders = count;
+    };
+    const renderDrinkResult = (results) => {
+      menuDrinkContainer.foods = results;
+    };
+
+    const renderCustomerReviewLoader = (count) => {
+      customerReviewContainer.loaders = count;
+    };
+    const renderCustomerReviewResult = (results) => {
+      if (results.length > 0) {
+        customerReviewContainer.reviews = results;
+      } else {
+        customerReviewContainer.renderEmpty();
+      }
+    };
 
     hideHero();
-
-    notificationContainer.innerHTML = createNotificationTemplate();
-
-    restaurantDetailContainer.innerHTML = createPlaceholderDetailTemplate();
-
-    customerReviewContainer.innerHTML = createPlaceholderCustomerReviewTemplate();
-    customerReviewContainer.innerHTML += createPlaceholderCustomerReviewTemplate();
-    customerReviewContainer.innerHTML += createPlaceholderCustomerReviewTemplate();
-    customerReviewContainer.innerHTML += createPlaceholderCustomerReviewTemplate();
-
-    menuFoodContainer.innerHTML = createPlaceholderViralFoodTemplate();
-    menuFoodContainer.innerHTML += createPlaceholderViralFoodTemplate();
-    menuFoodContainer.innerHTML += createPlaceholderViralFoodTemplate();
-    menuFoodContainer.innerHTML += createPlaceholderViralFoodTemplate();
-
-    menuDrinkContainer.innerHTML = createPlaceholderViralFoodTemplate();
-    menuDrinkContainer.innerHTML += createPlaceholderViralFoodTemplate();
-    menuDrinkContainer.innerHTML += createPlaceholderViralFoodTemplate();
-    menuDrinkContainer.innerHTML += createPlaceholderViralFoodTemplate();
+    renderRestaurantDetailLoader();
+    renderFoodLoader(4);
+    renderDrinkLoader(4);
+    renderCustomerReviewLoader(4);
 
     try {
       const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
+
       const {
         id,
         name,
@@ -113,7 +117,11 @@ const Detail = {
         menus,
         customerReviews,
       } = restaurantDetail;
+
       const { foods, drinks } = menus;
+
+      const additionalFood = additionalFoodMenu(name);
+      const additionalDrink = additionalDrinkMenu(name);
 
       showBreadcrumb([
         dataBreadcrumbRestaurant,
@@ -124,38 +132,15 @@ const Detail = {
         },
       ]);
 
-      setTimeout(() => {
-        restaurantDetailContainer.innerHTML = createRestaurantDetailTemplate(restaurantDetail);
-
-        customerReviewContainer.innerHTML = '';
-        menuFoodContainer.innerHTML = '';
-        menuDrinkContainer.innerHTML = '';
-
-        foods.forEach((food) => {
-          menuFoodContainer.innerHTML += createViralFoodTemplate({
-            pictureId: 'https://via.placeholder.com/256x150?text=Menu%20Makanan',
-            restaurant: name,
-            name: food.name,
-            description: 'Lorem ipsum dolor sit amet',
-          });
-        });
-
-        drinks.forEach((drink) => {
-          menuDrinkContainer.innerHTML += createViralFoodTemplate({
-            pictureId: 'https://via.placeholder.com/256x150?text=Menu%20Minuman',
-            restaurant: name,
-            name: drink.name,
-            description: 'Lorem ipsum dolor sit amet',
-          });
-        });
-
-        customerReviews.forEach((customerReview) => {
-          customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
-        });
-      }, 2000);
+      renderRestaurantDetailResult(restaurantDetail);
+      renderAdditionalFood(additionalFood);
+      renderFoodResult(foods);
+      renderAdditionalDrink(additionalDrink);
+      renderDrinkResult(drinks);
+      renderCustomerReviewResult(customerReviews);
 
       FavoriteRestaurantButtonInitiator.init({
-        favoriteButtonContainer: document.querySelector('#btn-favorite-restaurant'),
+        favoriteButtonContainer: document.querySelector('favorite-restaurant-bar'),
         restaurant: {
           id,
           name,
@@ -174,7 +159,7 @@ const Detail = {
         customerReviewContainer,
       });
     } catch (message) {
-      console.log(message);
+      fallbackRestaurantDetailResult(message);
     }
   },
 };

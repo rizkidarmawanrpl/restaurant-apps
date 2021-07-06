@@ -73,7 +73,7 @@ class RestaurantItem extends HTMLElement {
                 <p class="restaurant-item__description">${restaurant.description.replace(/^(.{330}[^\s]*).*/, '$1')}...</p>
             </div>
         </article>
-        `;
+    `;
   }
 }
 

@@ -3,15 +3,15 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/sass/theme.scss';
 import '../../node_modules/placeholder-loading/src/scss/placeholder-loading.scss';
 import '../styles/sass/main.scss';
-import '../styles/sass/component.scss';
 import '../styles/sass/responsive.scss';
-import App from './views/app';
-import swRegister from './utils/sw-register';
 import './component/app-bar';
 import './component/footer-bar';
 import './component/menu-list';
 import './component/hero-bar';
 import './component/breadcrumb-list';
+import './component/notification-bar';
+import App from './views/app';
+import swRegister from './utils/sw-register';
 
 const app = new App({
   metatitle: document.querySelector('title'),

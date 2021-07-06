@@ -83,7 +83,7 @@
         margin-top: 0;
     }
 
-    .container__restaurant-detail {
+    restaurant-detail {
         grid-template-columns: 1fr;
         grid-column-gap: 0;
         margin: 0 0 20px;
@@ -93,7 +93,7 @@
         padding: 0;
     }
 
-    .restaurant-detail__content, .restaurant-detail__address, .menu-utama, .customer-reviews, .container__add-review {
+    .restaurant-detail__content, .restaurant-detail__address, .menu-utama, customer-review-list, .container__add-review {
         padding: 32px;
     }
 
@@ -105,12 +105,13 @@
         border-radius: 0;
     }
 
-    .container__restaurant-favorite {
+    favorite-restaurant-bar {
         grid-template-columns: 1fr auto;
+        grid-column-gap: 10px;
     }
 
     .restaurant-favorite__item {
-            align-self: center;
+        align-self: center;
 
         &:first-child {
             grid-column: 1 / 3;
@@ -133,7 +134,7 @@
 }
 
 @media screen and (min-width: 425px) {
-    .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
+    .menu-utama__foods, .menu-utama__drinks, customer-review-list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -157,7 +158,7 @@
         font-size: 14px;
     }
 
-    .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
+    .menu-utama__foods, .menu-utama__drinks, customer-review-list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -174,7 +175,7 @@
         height: 200px;
     }
 
-    .viral-food {
+    food-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 25px;
@@ -202,37 +203,39 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .viral-food {
+    food-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-auto-flow: column;
     }
 
-    .viral-food-item:first-child {
+    food-item:first-child {
         grid-column: 1 / 3;
         grid-row: 1 / 3;
 
-        .viral-food-item__thumbnail {
-            height: 300px;
-        }
-
-        .viral-food-item__title {
-            font-size: 3em;
-        }
-
-        .viral-food-item__resto {
-            font-size: 2em;
+        .viral-food-item {
+            .viral-food-item__thumbnail {
+                height: 300px;
+            }
+    
+            .viral-food-item__title {
+                font-size: 3em;
+            }
+    
+            .viral-food-item__resto {
+                font-size: 2em;
+            }
         }
     }
 
-    .viral-food-list {
+    .food-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto;
         grid-auto-flow: unset;
 
-        .viral-food-item:first-child {
+        food-item:first-child {
             grid-column: unset;
             grid-row: unset;
 
@@ -263,7 +266,7 @@
         }
     }
 
-    .menu-utama__foods, .menu-utama__drinks, .customer-reviews {
+    .menu-utama__foods, .menu-utama__drinks, customer-review-list {
         grid-template-columns: repeat(4, 1fr);
     }
 

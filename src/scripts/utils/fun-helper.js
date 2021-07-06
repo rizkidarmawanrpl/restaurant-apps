@@ -40,16 +40,27 @@ const showBreadcrumb = (dataBreadcrumb) => {
   const breadcrumb = document.querySelector('.breadcrumb');
   const breadcrumbContainer = document.querySelector('breadcrumb-list');
   breadcrumb.classList.remove('hidden');
-
   breadcrumbContainer.breadcrumbs = dataBreadcrumb;
 };
 
 const showNotification = (teks) => {
-  const notificationContainer = document.getElementById('notification');
-  notificationContainer.innerHTML = teks;
+  const notificationContainer = document.querySelector('notification-bar');
+  notificationContainer.notification = teks;
   notificationContainer.classList.toggle('show');
   setTimeout(() => { notificationContainer.classList.remove('show'); }, 2900);
 };
+
+const additionalFoodMenu = (restaurant) => ({
+  pictureId: 'https://via.placeholder.com/256x150?text=Menu%20Makanan',
+  restaurant,
+  description: 'Lorem ipsum dolor sit amet',
+});
+
+const additionalDrinkMenu = (restaurant) => ({
+  pictureId: 'https://via.placeholder.com/256x150?text=Menu%20Minuman',
+  restaurant,
+  description: 'Lorem ipsum dolor sit amet',
+});
 
 export {
   initialName,
@@ -60,4 +71,6 @@ export {
   dataBreadcrumbHome,
   dataBreadcrumbRestaurant,
   showNotification,
+  additionalFoodMenu,
+  additionalDrinkMenu,
 };

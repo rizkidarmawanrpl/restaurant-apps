@@ -1,27 +1,35 @@
 /* eslint-disable no-script-url */
 /* eslint-disable no-console */
+import '../../component/restaurant-list';
 import RestaurantDbSource from '../../data/restaurantdb-source';
-import { createRestaurantItemTemplate, createPlaceholderRestaurantTemplate } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbHome, showBreadcrumb } from '../../utils/fun-helper';
 
 const RestaurantList = {
   async render() {
     return `
-            <section class="content">
-                <div class="container__restaurant">
-                    <h1 class="restaurant__label">Explore Restaurant</h1>
-                    <div id="restaurant-list" class="restaurants">
-                        <!-- List data restaurant -->
-                    </div>
-                </div>
-            </section>
-        `;
+      <section class="content">
+          <div class="container__restaurant">
+              <h1 class="restaurant__label">Explore Restaurant</h1>
+              <restaurant-list></restaurant-list>
+          </div>
+      </section>
+    `;
   },
 
   async afterRender() {
-    const restaurantsContainer = document.querySelector('#restaurant-list');
+    const restaurantsContainer = document.querySelector('restaurant-list');
+    const renderRestaurantLoader = (count) => {
+      restaurantsContainer.loaders = count;
+    };
+    const renderRestaurantResult = (results) => {
+      restaurantsContainer.restaurants = results;
+    };
+    const fallbackRestaurantResult = (message) => {
+      restaurantsContainer.renderError = message;
+    };
 
     hideHero();
+    renderRestaurantLoader(3);
 
     showBreadcrumb([
       dataBreadcrumbHome,
@@ -32,22 +40,11 @@ const RestaurantList = {
       },
     ]);
 
-    restaurantsContainer.innerHTML = createPlaceholderRestaurantTemplate();
-    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
-    restaurantsContainer.innerHTML += createPlaceholderRestaurantTemplate();
-
     try {
       const restaurants = await RestaurantDbSource.listRestaurants();
-
-      setTimeout(() => {
-        restaurantsContainer.innerHTML = '';
-
-        restaurants.forEach((restaurant) => {
-          restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
-      }, 2000);
+      renderRestaurantResult(restaurants);
     } catch (message) {
-      console.log(message);
+      fallbackRestaurantResult(message);
     }
   },
 };

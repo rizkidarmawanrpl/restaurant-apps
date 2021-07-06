@@ -1,6 +1,6 @@
 /* eslint-disable no-script-url */
+import '../../component/food-list';
 import ViralFood from '../../data/MAKANAN_TERVIRAL.json';
-import { createViralFoodTemplate } from '../templates/template-creator';
 import { hideHero, dataBreadcrumbRestaurant, showBreadcrumb } from '../../utils/fun-helper';
 
 const ViralFoodList = {
@@ -9,9 +9,7 @@ const ViralFoodList = {
         <section class="content">
             <div class="container__viral-food">
                 <h1 class="viral-food__label">45's Foods Terviral</h1>
-                <div id="viral-food-list" class="viral-food viral-food-list">
-                    <!-- List data viral foods -->
-                </div>
+                <food-list class="food-list"></food-list>
             </div>
         </section>
     `;
@@ -19,10 +17,12 @@ const ViralFoodList = {
 
   async afterRender() {
     const viralFoods = ViralFood.data;
-    const viralFoodsContainer = document.querySelector('#viral-food-list');
+    const viralFoodsContainer = document.querySelector('food-list');
+    const renderViralFoodResult = (results) => {
+      viralFoodsContainer.foods = results;
+    };
 
     hideHero();
-
     showBreadcrumb([
       dataBreadcrumbRestaurant,
       {
@@ -32,9 +32,7 @@ const ViralFoodList = {
       },
     ]);
 
-    viralFoods.forEach((food) => {
-      viralFoodsContainer.innerHTML += createViralFoodTemplate(food);
-    });
+    renderViralFoodResult(viralFoods);
   },
 };
 

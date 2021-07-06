@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
+import '../../component/restaurant-list';
+import '../../component/food-list';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import ViralFood from '../../data/MAKANAN_TERVIRAL.json';
-import { createRestaurantItemTemplate, createViralFoodTemplate, createPlaceholderRestaurantTemplate } from '../templates/template-creator';
 import { hideBreadcrumb, showHero } from '../../utils/fun-helper';
-import '../../component/restaurant-list';
 
 const Home = {
   async render() {
@@ -11,9 +11,6 @@ const Home = {
         <section class="content">
             <div class="container__restaurant">
                 <h1 class="restaurant__label">Explore Restaurant</h1>
-                <!-- <div id="restaurant-list" class="restaurants">
-                    List data restaurant
-                </div> -->
                 <restaurant-list></restaurant-list>
                 <div class="restaurant__footer">
                     <a href="#/restaurant-list" class="btn btn-primary">Tampilin lebih banyak resto</a>
@@ -22,9 +19,7 @@ const Home = {
 
             <div class="container__viral-food">
                 <h1 class="viral-food__label">45's Foods Terviral</h1>
-                <div id="viral-food-list" class="viral-food">
-                    <!-- List data viral foods -->
-                </div>
+                <food-list></food-list>
                 <div class="viral-food__footer">
                     <a href="#/viral-food-list" class="btn btn-primary">Lihat semua yang viral</a>
                 </div>
@@ -34,16 +29,20 @@ const Home = {
   },
 
   async afterRender() {
+    const viralFoods = ViralFood.data;
     const restaurantsContainer = document.querySelector('restaurant-list');
+    const viralFoodsContainer = document.querySelector('food-list');
     const renderRestaurantLoader = (count) => {
       restaurantsContainer.loaders = count;
     };
     const renderRestaurantResult = (results) => {
-      restaurantsContainer.innerHTML = '';
       restaurantsContainer.restaurants = results;
     };
     const fallbackRestaurantResult = (message) => {
       restaurantsContainer.renderError(message);
+    };
+    const renderViralFoodResult = (results) => {
+      viralFoodsContainer.foods = results;
     };
 
     showHero();
@@ -57,11 +56,7 @@ const Home = {
       fallbackRestaurantResult(message);
     }
 
-    const viralFoods = ViralFood.data;
-    const viralFoodsContainer = document.querySelector('#viral-food-list');
-    viralFoods.forEach((food) => {
-      viralFoodsContainer.innerHTML += createViralFoodTemplate(food);
-    });
+    renderViralFoodResult(viralFoods);
   },
 };
 

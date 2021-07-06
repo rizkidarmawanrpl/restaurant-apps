@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 import DataMenu from '../data/MENU.json';
-import { createMenuTemplate } from '../views/templates/template-creator';
 
 const MenuInitiator = {
   init({ menu }) {
@@ -10,13 +9,9 @@ const MenuInitiator = {
 
   _renderMenu() {
     const dataMenu = DataMenu.menus;
-    const elMenu = this._menu;
+    const menuElement = this._menu;
 
-    elMenu.menus = dataMenu;
-
-    // dataMenu.forEach((menu) => {
-    //   elMenu.innerHTML += createMenuTemplate(menu);
-    // });
+    menuElement.menus = dataMenu;
   },
 };
 

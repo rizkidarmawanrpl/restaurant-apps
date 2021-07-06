@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
+import '../component/customer-review-list';
 import RestaurantDbSource from '../data/restaurantdb-source';
-import { createCustomerReviewTemplate } from '../views/templates/template-creator';
 import { showNotification } from './fun-helper';
 
 const ReviewInitiator = {
@@ -40,10 +40,7 @@ const ReviewInitiator = {
       try {
         const customerReviews = await RestaurantDbSource.addReview(formdata);
 
-        this._customerReviewContainer.innerHTML = '';
-        customerReviews.forEach((customerReview) => {
-          this._customerReviewContainer.innerHTML += createCustomerReviewTemplate(customerReview);
-        });
+        this._customerReviewContainer.reviews = customerReviews;
 
         showNotification('Review kamu berhasil disimpan.');
       } catch (message) {
