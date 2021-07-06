@@ -11,7 +11,6 @@ import {
   showBreadcrumb,
   additionalFoodMenu,
   additionalDrinkMenu,
-  showNotification,
 } from '../../utils/fun-helper';
 import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
 import ReviewInitiator from '../../utils/review-initiator';
