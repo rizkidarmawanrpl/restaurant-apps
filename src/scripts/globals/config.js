@@ -1,4 +1,4 @@
-const cacheName = new Date().toISOString();
+const cacheName = 'cache';// new Date().toISOString();
 
 const CONFIG = {
   KEY: '12345',
