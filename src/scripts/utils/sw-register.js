@@ -21,7 +21,7 @@ const swRegister = async () => {
       console.log('Workbox gagal dimuat');
     }
 
-    const wb = new Workbox('../sw.js');
+    const wb = new Workbox('./sw.js');
     wb.addEventListener('installed', (event) => {
       if (!event.isUpdate) {
         console.log('Service Worker Installed!');
