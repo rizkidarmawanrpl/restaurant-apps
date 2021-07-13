@@ -8,6 +8,7 @@ const URLS = {
   SEGMENT: {
     LIST: 'list',
     DETAIL: 'detail',
+    SEARCH: 'search',
   },
 };
 

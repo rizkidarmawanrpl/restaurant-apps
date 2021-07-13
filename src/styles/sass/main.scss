@@ -53,6 +53,7 @@ body {
 }
 
 .btn {
+  font-family: "Poppins", sans-serif;
   padding: 14px 20px;
   color: var(--theme-color-white);
   font-size: 1.2em;
@@ -252,7 +253,8 @@ main {
  * Content
  */
 
-.content, .content-detail {
+.content,
+.content-detail {
   width: 100%;
   padding: 32px;
   margin: 0 auto;
@@ -262,7 +264,10 @@ main {
  * Restaurant
  */
 
-.container__restaurant, restaurant-detail, .container__menu-utama, .container__customer-review {
+.container__restaurant,
+restaurant-detail,
+.container__menu-utama,
+.container__customer-review {
   width: 100%;
   margin: 60px auto;
   text-align: center;
@@ -496,7 +501,8 @@ food-item {
     color: var(--theme-color-turquoise);
   }
 
-  a, p {
+  a,
+  p {
     display: inline-block;
     text-decoration: none;
     color: inherit;
@@ -531,13 +537,13 @@ footer-bar {
   text-align: center;
 
   p {
-      font-size: 14px;
-      padding: 1.3em;
-      color: var(--theme-color-white);
+    font-size: 14px;
+    padding: 1.3em;
+    color: var(--theme-color-white);
 
-      span {
+    span {
       text-transform: uppercase;
-      }
+    }
   }
 }
 
@@ -609,7 +615,7 @@ restaurant-detail {
 }
 
 .restaurant-detail__title {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2em;
   color: #000000;
   font-weight: bold;
@@ -622,7 +628,7 @@ restaurant-detail {
 
   span {
     display: inline-block;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.2em;
     font-weight: bold;
     margin-right: 10px;
@@ -661,7 +667,7 @@ restaurant-detail {
 }
 
 .restaurant-detail__address-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.2em;
   font-weight: bold;
   color: #000000;
@@ -689,14 +695,14 @@ favorite-restaurant-bar {
 }
 
 .restaurant-favorite__title {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.3em;
   font-weight: bold;
   color: #000000;
 }
 
 .restaurant-favorite__subtitle {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.3em;
   font-weight: lighter;
   color: var(--theme-color-black);
@@ -737,13 +743,15 @@ favorite-restaurant-bar {
   margin: 20px 0;
 }
 
-.menu-utama__foods, .menu-utama__drinks {
+.menu-utama__foods,
+.menu-utama__drinks {
   display: grid;
   grid-column-gap: 25px;
   grid-row-gap: 25px;
 }
 
-.menu-utama__food-item, .menu-utama__drink-item {
+.menu-utama__food-item,
+.menu-utama__drink-item {
   width: 100%;
   border: #cccccc thin solid;
   border-radius: 10px;
@@ -820,7 +828,7 @@ customer-review-list {
 
     h2 {
       color: white;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       font-size: 1.2em;
       text-transform: uppercase;
     }
@@ -829,12 +837,13 @@ customer-review-list {
   &-name {
     color: var(--theme-color-turquoise);
     width: 100%;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.2em;
     text-transform: capitalize;
   }
 
-  &-review, &-date {
+  &-review,
+  &-date {
     line-height: 24px;
   }
 
@@ -864,7 +873,7 @@ customer-review-list {
 }
 
 .add-review__title {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.3em;
   font-weight: bold;
   line-height: 24px;
@@ -873,6 +882,20 @@ customer-review-list {
     display: block;
     font-size: 0.9em;
     font-weight: lighter;
+  }
+}
+
+/**
+ * Form search restaurant
+ */
+
+search-restaurant-form {
+  display: grid;
+  margin: 25px 0;
+  grid-template-columns: 1fr auto;
+
+  .form-control {
+    font-family: "Poppins", sans-serif;
   }
 }
 
@@ -908,13 +931,14 @@ form.form-horizontal {
   width: 100%;
   border: var(--theme-color-red) 2px solid;
   padding: 25px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.3em;
   line-height: 24px;
   text-align: left;
 }
 
-input.form-control, textarea.form-control {
+input.form-control,
+textarea.form-control {
   width: 100%;
   min-height: 40px;
   border: rgb(66 66 66 / 50%) thin solid;
@@ -923,7 +947,8 @@ input.form-control, textarea.form-control {
   padding-left: 10px;
 
   &:focus {
-    box-shadow: -2px -1px 5px rgb(0 184 169 / 50%), 2px 2px 5px rgb(0 184 169 / 50%);
+    box-shadow: -2px -1px 5px rgb(0 184 169 / 50%),
+      2px 2px 5px rgb(0 184 169 / 50%);
     border: rgb(0 184 169 / 50%) thin solid;
     border-radius: 5px;
     outline: none;
@@ -951,7 +976,7 @@ notification-bar {
   z-index: 1;
   left: 50%;
   bottom: 30px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.2em;
 
   &.show {
@@ -965,7 +990,10 @@ notification-bar {
  * Placeholder custom
  */
 
-.restaurant-item, restaurant-detail, .customer-review__item, .viral-food-item {
+.restaurant-item,
+restaurant-detail,
+.customer-review__item,
+.viral-food-item {
   .ph-item {
     margin: 0;
     padding: 0;
@@ -983,7 +1011,8 @@ notification-bar {
   }
 }
 
-.restaurant-item, restaurant-detail {
+.restaurant-item,
+restaurant-detail {
   .ph-picture {
     height: 200px;
   }
@@ -1006,21 +1035,45 @@ notification-bar {
 }
 
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

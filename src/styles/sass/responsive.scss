@@ -1,282 +1,321 @@
 @media screen and (max-width: 320px) {
-    /*
+  /*
      * Detail
      */
 
-    .breadcrumb {
-        display: none;
-    }
+  .breadcrumb {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 425px) {
-    .restaurant-item__thumbnail, .viral-food-item__thumbnail {
-        height: 150px;
+  .restaurant-item__thumbnail,
+  .viral-food-item__thumbnail {
+    height: 150px;
+  }
+
+  search-restaurant-form {
+    .form-control,
+    .form-control:focus {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
+
+    .btn {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 499px) {
-    .nav {
-        display: none;
-        z-index: 10;
-        background-color: #fff;
-        width: 100%;
+  .nav {
+    display: none;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
 
-        /* This transform move the drawer off canvas */
-        -webkit-transform: translate(-300px, 0);
-        transform: translate(-300px, 0);
+    /* This transform move the drawer off canvas */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
 
-        /* Optionally, we animate the drawer */
-        transition: transform 0.3s ease;
-    }
+    /* Optionally, we animate the drawer */
+    transition: transform 0.3s ease;
+  }
 
-    .open {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  .open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 
-    menu-item {
-        display: list-item;
-        border-bottom: 1px solid var(--theme-color-yellow);
-        width: 100%;
-        text-align: center;
-        list-style: none;
-        margin-left: 0;
-    }
+  menu-item {
+    display: list-item;
+    border-bottom: 1px solid var(--theme-color-yellow);
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    margin-left: 0;
+  }
 
-    .nav-display {
-        display: block;
-    }
+  .nav-display {
+    display: block;
+  }
 
-    .container__header {
-        position: relative;
-        grid-template-columns: 100%;
-    }
+  .container__header {
+    position: relative;
+    grid-template-columns: 100%;
+  }
 
-    app-bar {
-        height: auto;
-    }
+  app-bar {
+    height: auto;
+  }
 
-    .header__title {
-        position: static;
-        top: 0;
-        transform: unset;
-        margin: 10px auto;
-    }
+  .header__title {
+    position: static;
+    top: 0;
+    transform: unset;
+    margin: 10px auto;
+  }
 
-    hero-bar {
-        padding-top: 0;
-    }
+  hero-bar {
+    padding-top: 0;
+  }
 
-    .hero__inner {
-        padding: 0 20px;
-    }
+  .hero__inner {
+    padding: 0 20px;
+  }
 
-    .container__skip-link:focus {
-        top: 105px;
-    }
+  .container__skip-link:focus {
+    top: 105px;
+  }
 
-    /*
+  /*
      * Detail
      */
 
-    .breadcrumb {
-        margin-top: 0;
+  .breadcrumb {
+    margin-top: 0;
+  }
+
+  restaurant-detail {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+    margin: 0 0 20px;
+  }
+
+  .content-detail {
+    padding: 0;
+  }
+
+  .restaurant-detail__content,
+  .restaurant-detail__address,
+  .menu-utama,
+  customer-review-list,
+  .container__add-review {
+    padding: 32px;
+  }
+
+  .restaurant-detail__content {
+    padding-bottom: 0;
+  }
+
+  .restaurant-detail__thumbnail {
+    border-radius: 0;
+  }
+
+  favorite-restaurant-bar {
+    grid-template-columns: 1fr auto;
+    grid-column-gap: 10px;
+  }
+
+  .restaurant-favorite__item {
+    align-self: center;
+
+    &:first-child {
+      grid-column: 1 / 3;
+      margin-bottom: 0.8em;
     }
 
-    restaurant-detail {
-        grid-template-columns: 1fr;
-        grid-column-gap: 0;
-        margin: 0 0 20px;
+    &:nth-child(3) {
+      grid-row: 2 / 2;
+      text-align: right;
     }
+  }
 
-    .content-detail {
-        padding: 0;
-    }
+  .restaurant-favorite__title {
+    font-size: 1.2em;
+  }
 
-    .restaurant-detail__content, .restaurant-detail__address, .menu-utama, customer-review-list, .container__add-review {
-        padding: 32px;
-    }
-
-    .restaurant-detail__content {
-        padding-bottom: 0;
-    }
-
-    .restaurant-detail__thumbnail {
-        border-radius: 0;
-    }
-
-    favorite-restaurant-bar {
-        grid-template-columns: 1fr auto;
-        grid-column-gap: 10px;
-    }
-
-    .restaurant-favorite__item {
-        align-self: center;
-
-        &:first-child {
-            grid-column: 1 / 3;
-            margin-bottom: 0.8em;
-        }
-
-        &:nth-child(3) {
-            grid-row: 2 / 2;
-            text-align: right;
-        }
-    }
-
-    .restaurant-favorite__title {
-        font-size: 1.2em;
-    }
-    
-    .restaurant-favorite__subtitle {
-        font-size: 1em;
-    }
+  .restaurant-favorite__subtitle {
+    font-size: 1em;
+  }
 }
 
 @media screen and (min-width: 425px) {
-    .menu-utama__foods, .menu-utama__drinks, customer-review-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .menu-utama__foods,
+  .menu-utama__drinks,
+  customer-review-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (min-width: 500px) {
-    .header__menu {
-        display: none
-    }
+  .header__menu {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 650px) {
-    .restaurant-item__content {
-        padding: 16px 32px 32px 32px;
-    }
+  .restaurant-item__content {
+    padding: 16px 32px 32px 32px;
+  }
 
-    .restaurant-item__title {
-        font-size: 18px;
-    }
+  .restaurant-item__title {
+    font-size: 18px;
+  }
 
-    .restaurant-item__description {
-        font-size: 14px;
-    }
+  .restaurant-item__description {
+    font-size: 14px;
+  }
 
-    .menu-utama__foods, .menu-utama__drinks, customer-review-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .menu-utama__foods,
+  .menu-utama__drinks,
+  customer-review-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (min-width: 700px) {
-    restaurant-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 25px;
-        grid-row-gap: 25px;
-    }
+  restaurant-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+  }
 
-    .restaurant-item__thumbnail {
-        height: 200px;
-    }
+  .restaurant-item__thumbnail {
+    height: 200px;
+  }
 
-    food-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 25px;
-        grid-row-gap: 25px;
-    }
+  food-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+  }
 
-    .restaurant-detail__thumbnail {
-        img {
-            width: unset;
-            height: 100%;
-        }
+  .restaurant-detail__thumbnail {
+    img {
+      width: unset;
+      height: 100%;
     }
+  }
 }
 
 @media screen and (min-width: 800px) {
-    menu-list {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+  menu-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 900px) {
-    restaurant-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+  restaurant-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
-    food-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-auto-flow: column;
+  food-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: column;
+  }
+
+  food-item:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+
+    .viral-food-item {
+      .viral-food-item__thumbnail {
+        height: 300px;
+      }
+
+      .viral-food-item__title {
+        font-size: 3em;
+      }
+
+      .viral-food-item__resto {
+        font-size: 2em;
+      }
     }
+  }
+
+  .food-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-auto-flow: unset;
 
     food-item:first-child {
-        grid-column: 1 / 3;
-        grid-row: 1 / 3;
+      grid-column: unset;
+      grid-row: unset;
 
-        .viral-food-item {
-            .viral-food-item__thumbnail {
-                height: 300px;
-            }
-    
-            .viral-food-item__title {
-                font-size: 3em;
-            }
-    
-            .viral-food-item__resto {
-                font-size: 2em;
-            }
-        }
+      .viral-food-item__thumbnail {
+        height: 130px;
+      }
+
+      .viral-food-item__title {
+        font-size: 16px;
+      }
+
+      .viral-food-item__resto {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .viral-food-item__description {
+    //background-color: aquamarine;
+    height: 20px;
+    overflow: hidden;
+  }
+
+  .restaurant-detail__thumbnail {
+    img {
+      width: 100%;
+      height: unset;
+    }
+  }
+
+  .menu-utama__foods,
+  .menu-utama__drinks,
+  customer-review-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .form-horizontal {
+    width: 500px;
+  }
+
+  search-restaurant-form {
+    .form-control,
+    .form-control:focus {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
-    .food-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: auto;
-        grid-auto-flow: unset;
-
-        food-item:first-child {
-            grid-column: unset;
-            grid-row: unset;
-
-            .viral-food-item__thumbnail {
-                height: 130px;
-            }
-            
-            .viral-food-item__title {
-                font-size: 16px;
-            }
-
-            .viral-food-item__resto {
-                font-size: 14px;
-            }
-        }
+    .btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
-
-    .viral-food-item__description {
-        //background-color: aquamarine;
-        height: 20px;
-        overflow: hidden;
-    }
-
-    .restaurant-detail__thumbnail {
-        img {
-            width: 100%;
-            height: unset;
-        }
-    }
-
-    .menu-utama__foods, .menu-utama__drinks, customer-review-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .form-horizontal {
-        width: 500px;
-    }
+  }
 }
 
 @media screen and (min-width: 1200px) {
-    .content, .content-detail, .breadcrumb breadcrumb-list, .container__add-review {
-        max-width: 1200px;
-    }
+  .content,
+  .content-detail,
+  .breadcrumb breadcrumb-list,
+  .container__add-review {
+    max-width: 1200px;
+  }
 }

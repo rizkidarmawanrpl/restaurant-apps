@@ -33,6 +33,12 @@ class RestaurantDbSource {
     const responseJson = await response.json();
     return responseJson.customerReviews;
   }
+
+  static async searchRestaurants(query) {
+    const response = await fetch(API_ENPOINT.SEARCH(query));
+    const responseJson = await response.json();
+    return responseJson.restaurants;
+  }
 }
 
 export default RestaurantDbSource;

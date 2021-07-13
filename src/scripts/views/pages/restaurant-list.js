@@ -1,8 +1,10 @@
 /* eslint-disable no-script-url */
 /* eslint-disable no-console */
 import '../../component/restaurant-list';
+import '../../component/search-restaurant-form';
 import RestaurantDbSource from '../../data/restaurantdb-source';
 import { hideHero, dataBreadcrumbHome, showBreadcrumb } from '../../utils/fun-helper';
+import SearchRestaurantInitiator from '../../utils/search-restaurant-initiator';
 
 const RestaurantList = {
   async render() {
@@ -10,9 +12,12 @@ const RestaurantList = {
       <section class="content">
           <div class="container__restaurant">
               <h1 class="restaurant__label">Explore Restaurant</h1>
+              <search-restaurant-form></search-restaurant-form>
               <restaurant-list></restaurant-list>
           </div>
       </section>
+
+      <notification-bar></notification-bar>
     `;
   },
 
@@ -46,6 +51,12 @@ const RestaurantList = {
     } catch (message) {
       fallbackRestaurantResult(message);
     }
+
+    SearchRestaurantInitiator.init({
+      inputSearch: document.querySelector('[name="search"]'),
+      button: document.querySelector('#button-search'),
+      restaurantsContainer,
+    });
   },
 };
 
