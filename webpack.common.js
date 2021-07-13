@@ -62,11 +62,11 @@ module.exports = {
         },
       ],
     }),
-    new CleanWebpackPlugin(),
     new WorkboxPlugin.InjectManifest({
       swSrc: './src/scripts/sw.js',
       swDest: 'sw.js',
     }),
+    new CleanWebpackPlugin(),
     // new ServiceWorkerWebpackPlugin({
     //   entry: path.resolve(__dirname, 'src/scripts/sw.js'),
     // }),
