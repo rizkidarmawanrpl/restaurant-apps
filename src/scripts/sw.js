@@ -41,7 +41,7 @@ setCacheNameDetails({
 });
 
 precacheAndRoute([
-  // ...self.__WB_MANIFEST,
+  ...self.__WB_MANIFEST,
   { url: './', revision: '1' },
   { url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap', revision: '1' },
   { url: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css', revision: '1' },

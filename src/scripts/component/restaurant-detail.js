@@ -102,7 +102,7 @@ class RestaurantDetail extends HTMLElement {
 
     this.innerHTML = `
         <div class="restaurant-detail__thumbnail">
-            <img src="${CONFIG.BASE_MEDIUM_IMAGE_URL + restaurant.pictureId}">
+            <img src="${CONFIG.BASE_MEDIUM_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
         </div>
         <div class="restaurant-detail__content">
             <h1 class="restaurant-detail__title">${restaurant.name}</h1>

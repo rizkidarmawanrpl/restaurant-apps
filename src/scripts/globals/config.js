@@ -1,6 +1,6 @@
 import URLS from './config_url';
 
-const cacheName = '1.7'; // new Date().toISOString();
+const cacheName = '1.8'; // new Date().toISOString();
 
 const CONFIG = {
   KEY: '12345',
