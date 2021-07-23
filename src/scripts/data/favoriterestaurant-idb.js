@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable consistent-return */
 import CONFIG from '../globals/config';
 import dbPromise from './database';
 
@@ -5,6 +7,10 @@ const { OBJECT_STORE_FAVORITE_RESTAURANT } = CONFIG;
 
 const FavoriteRestaurantIdb = {
   async getRestaurant(id) {
+    if (!id) {
+      return;
+    }
+
     return (await dbPromise).get(OBJECT_STORE_FAVORITE_RESTAURANT, id);
   },
 
@@ -13,6 +19,10 @@ const FavoriteRestaurantIdb = {
   },
 
   async putRestaurant(restaurant) {
+    if (!restaurant.hasOwnProperty('id')) {
+      return;
+    }
+
     return (await dbPromise).put(OBJECT_STORE_FAVORITE_RESTAURANT, restaurant);
   },
 
