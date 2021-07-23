@@ -60,7 +60,10 @@ class RestaurantItem extends HTMLElement {
     this.innerHTML = `
         <article class="restaurant-item">
             <div class="restaurant-item__thumbnail">
-                <img src="${CONFIG.BASE_MEDIUM_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
+                <picture>
+                    <source media="(max-width: 600px)" srcset="${CONFIG.BASE_SMALL_IMAGE_URL + restaurant.pictureId}">
+                    <img class="lazyload" data-src="${CONFIG.BASE_MEDIUM_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}"></img>
+                </picture>
             </div>
             <div class="restaurant-item__lokasi">
                 <p>Kota ${restaurant.city}</p>

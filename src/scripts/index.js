@@ -12,6 +12,8 @@ import './component/breadcrumb-list';
 import './component/notification-bar';
 import App from './views/app';
 import swRegister from './utils/sw-register';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const app = new App({
   metatitle: document.querySelector('title'),
