@@ -5,6 +5,7 @@ import '../../component/customer-review-list';
 import '../../component/customer-review-form';
 import UrlParser from '../../routes/url-parser';
 import RestaurantDbSource from '../../data/restaurantdb-source';
+import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import {
   hideHero,
   dataBreadcrumbRestaurant,
@@ -12,7 +13,8 @@ import {
   additionalFoodMenu,
   additionalDrinkMenu,
 } from '../../utils/fun-helper';
-import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
+// import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 import ReviewInitiator from '../../utils/review-initiator';
 
 const Detail = {
@@ -138,8 +140,21 @@ const Detail = {
       renderDrinkResult(drinks);
       renderCustomerReviewResult(customerReviews);
 
-      FavoriteRestaurantButtonInitiator.init({
-        favoriteButtonContainer: document.querySelector('favorite-restaurant-bar'),
+      // FavoriteRestaurantButtonInitiator.init({
+      //   favoriteButtonContainer: document.querySelector('favorite-restaurant-bar'),
+      //   restaurant: {
+      //     id,
+      //     name,
+      //     description,
+      //     city,
+      //     pictureId,
+      //     rating,
+      //   },
+      // });
+
+      LikeButtonPresenter.init({
+        likeButtonContainer: document.querySelector('favorite-restaurant-bar'),
+        favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant: {
           id,
           name,
