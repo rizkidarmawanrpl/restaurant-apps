@@ -26,7 +26,7 @@ class RestaurantList extends HTMLElement {
   renderError(message) {
     this.innerHTML = '';
     this.innerHTML += `<p class="no-data">${message}</p>`;
-    console.log(message);
+    // console.log(message);
   }
 
   renderEmpty() {
@@ -44,4 +44,7 @@ class RestaurantList extends HTMLElement {
   }
 }
 
-customElements.define('restaurant-list', RestaurantList);
+// customElements.define('restaurant-list', RestaurantList);
+if (!customElements.get('restaurant-list')) {
+  customElements.define('restaurant-list', RestaurantList);
+}

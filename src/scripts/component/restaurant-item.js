@@ -61,23 +61,26 @@ class RestaurantItem extends HTMLElement {
         <article class="restaurant-item">
             <div class="restaurant-item__thumbnail">
                 <picture>
-                    <source media="(max-width: 600px)" srcset="${CONFIG.BASE_SMALL_IMAGE_URL + restaurant.pictureId}">
-                    <img class="lazyload" data-src="${CONFIG.BASE_MEDIUM_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}"></img>
+                    <source media="(max-width: 600px)" srcset="${CONFIG.BASE_SMALL_IMAGE_URL}${restaurant.pictureId || '-'}">
+                    <img class="lazyload" data-src="${CONFIG.BASE_MEDIUM_IMAGE_URL}${restaurant.pictureId || '-'}" alt="${restaurant.name || '-'}"></img>
                 </picture>
             </div>
             <div class="restaurant-item__lokasi">
-                <p>Kota ${restaurant.city}</p>
+                <p>Kota ${restaurant.city || '-'}</p>
             </div>
             <div class="restaurant-item__content">
-                <h2 class="restaurant-item__rating">Rating: <span>${restaurant.rating}</span></h2>
+                <h2 class="restaurant-item__rating">Rating: <span>${restaurant.rating || '-'}</span></h2>
                 <h1 class="restaurant-item__title">
-                    <a href="${`/#/detail/${restaurant.id}`}">${restaurant.name}</a>
+                    <a href="${`/#/detail/${restaurant.id || '0'}`}">${restaurant.name || '-'}</a>
                 </h1>
-                <p class="restaurant-item__description">${restaurant.description.replace(/^(.{330}[^\s]*).*/, '$1')}...</p>
+                <p class="restaurant-item__description">${restaurant.description.replace(/^(.{330}[^\s]*).*/, '$1') || '-'}...</p>
             </div>
         </article>
     `;
   }
 }
 
-customElements.define('restaurant-item', RestaurantItem);
+// customElements.define('restaurant-item', RestaurantItem);
+if (!customElements.get('restaurant-item')) {
+  customElements.define('restaurant-item', RestaurantItem);
+}

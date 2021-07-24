@@ -11,4 +11,7 @@ class SearchRestaurantForm extends HTMLElement {
   }
 }
 
-customElements.define('search-restaurant-form', SearchRestaurantForm);
+// customElements.define('search-restaurant-form', SearchRestaurantForm);
+if (!customElements.get('search-restaurant-form')) {
+  customElements.define('search-restaurant-form', SearchRestaurantForm);
+}
