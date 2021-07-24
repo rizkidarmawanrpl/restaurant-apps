@@ -55,4 +55,7 @@ class FavoriteRestaurantBar extends HTMLElement {
   }
 }
 
-customElements.define('favorite-restaurant-bar', FavoriteRestaurantBar);
+// customElements.define('favorite-restaurant-bar', FavoriteRestaurantBar);
+if (!customElements.get('favorite-restaurant-bar')) {
+  customElements.define('favorite-restaurant-bar', FavoriteRestaurantBar);
+}
