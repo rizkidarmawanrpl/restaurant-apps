@@ -9,6 +9,8 @@ const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -92,6 +94,10 @@ module.exports = {
       ],
     }),
     new BundleAnalyzerPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
   ],
   optimization: {
     splitChunks: {
@@ -115,6 +121,16 @@ module.exports = {
         },
       },
     },
-    minimizer: [new UglifyJsPlugin()],
+    minimizer: [
+      new UglifyJsPlugin(),
+      new OptimizeCssAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false,
+            annotation: true,
+          },
+        },
+      }),
+    ],
   },
 };
