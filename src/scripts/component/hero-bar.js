@@ -1,6 +1,20 @@
 class HeroBar extends HTMLElement {
-  connectedCallback() {
+  show() {
     this.render();
+  }
+
+  hide() {
+    this.innerHTML = '';
+  }
+
+  renderLoader() {
+    this.innerHTML = `
+      <div class="ph-item">
+          <div class="ph-col-12">
+              <div class="ph-picture"></div>
+          </div>
+      </div>
+    `;
   }
 
   render() {

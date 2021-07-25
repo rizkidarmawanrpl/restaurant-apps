@@ -59,7 +59,7 @@ body {
 .btn {
   font-family: "Poppins", sans-serif;
   padding: 14px 20px;
-  color: var(--theme-color-black);
+  color: var(--theme-color-white);
   font-size: 1.2em;
   border: none;
   border-radius: 5px;
@@ -344,12 +344,12 @@ restaurant-list {
   border-right: 2px var(--theme-color-white) solid;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  opacity: 0.85;
+  opacity: 1;
 
   p {
     margin: 1.15em;
     font-weight: bold;
-    color: var(--theme-color-black);
+    color: var(--theme-color-white);
     text-align: center;
   }
 }
@@ -557,14 +557,13 @@ food-item {
 footer-bar {
   display: block;
   background-color: var(--theme-color-turquoise);
-  padding: 2em;
   width: 100%;
   text-align: center;
 
   p {
     font-size: 14px;
     padding: 1.3em;
-    color: var(--theme-color-black);
+    color: var(--theme-color-white);
 
     span {
       text-transform: uppercase;
@@ -631,6 +630,8 @@ restaurant-detail {
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -728,8 +729,8 @@ favorite-restaurant-bar {
 
 .restaurant-favorite__subtitle {
   font-family: "Poppins", sans-serif;
-  font-size: 1.3em;
-  font-weight: lighter;
+  font-size: 1em;
+  // font-weight: lighter;
   color: var(--theme-color-black);
   margin-top: 5px;
 }
@@ -743,7 +744,7 @@ favorite-restaurant-bar {
     }
 
     i.liked {
-      color: var(--theme-color-red);
+      color: var(--theme-color-white);
     }
   }
 }
@@ -1060,6 +1061,18 @@ restaurant-detail {
 .viral-food-item {
   .ph-picture {
     height: 150px;
+  }
+}
+
+hero-bar {
+  .ph-item,
+  .ph-col-12 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ph-picture {
+    height: calc(100vh - 85px);
   }
 }
 

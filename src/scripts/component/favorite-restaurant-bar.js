@@ -29,7 +29,7 @@ class FavoriteRestaurantBar extends HTMLElement {
         <div class="restaurant-favorite__item">
             <div class="restaurant-favorite__button">
                 <button aria-label="Resto favorite" id="favorite-button" class="btn btn-primary">
-                    <i class="material-icons liked" aria-hidden="true">favorite-outline</i> <span>Suka</span>
+                    <i class="material-icons like" aria-hidden="true">favorite_border</i> <span>Suka</span>
                 </button>
             </div>
         </div>

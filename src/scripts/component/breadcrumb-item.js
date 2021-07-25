@@ -5,6 +5,10 @@ class BreadcrumbItem extends HTMLElement {
     this.render();
   }
 
+  renderLoader() {
+    this.innerHTML = '<a href="javascript:;" class="">-</a>';
+  }
+
   render() {
     const breadcrumb = this._breadcrumb;
     this.innerHTML = `<a href="${breadcrumb.link}" class="${breadcrumb.class}">${breadcrumb.label}</a>`;

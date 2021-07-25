@@ -2,8 +2,18 @@
 import './customer-review-item';
 
 class CustomerReviewList extends HTMLElement {
+  constructor() {
+    super();
+    this._limit = 0;
+  }
+
+  set limit(limit) {
+    this._limit = limit;
+  }
+
   set reviews(reviews) {
-    this._reviews = reviews;
+    const limit = this._limit;
+    this._reviews = (limit > 0) ? reviews.slice(0, limit) : reviews;
     this.render();
   }
 

@@ -8,13 +8,14 @@ const initialName = (str) => {
 };
 
 const hideHero = () => {
-  const hero = document.querySelector('.hero');
-  hero.classList.add('hidden');
+  const heroBar = document.querySelector('hero-bar');
+  heroBar.hide();
 };
 
 const showHero = () => {
-  const hero = document.querySelector('.hero');
-  hero.classList.remove('hidden');
+  const heroBar = document.querySelector('hero-bar');
+  heroBar.renderLoader();
+  heroBar.show();
 };
 
 const dataBreadcrumbHome = {
@@ -30,16 +31,13 @@ const dataBreadcrumbRestaurant = {
 };
 
 const hideBreadcrumb = () => {
-  const breadcrumb = document.querySelector('.breadcrumb');
   const breadcrumbContainer = document.querySelector('breadcrumb-list');
-  breadcrumb.classList.add('hidden');
   breadcrumbContainer.innerHTML = '';
 };
 
 const showBreadcrumb = (dataBreadcrumb) => {
-  const breadcrumb = document.querySelector('.breadcrumb');
   const breadcrumbContainer = document.querySelector('breadcrumb-list');
-  breadcrumb.classList.remove('hidden');
+  breadcrumbContainer.renderLoader();
   breadcrumbContainer.breadcrumbs = dataBreadcrumb;
 };
 

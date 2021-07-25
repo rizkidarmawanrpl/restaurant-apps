@@ -24,7 +24,7 @@ const app = new App({
   iconMenuDefault: document.querySelector('.icon-default'),
   iconMenuClose: document.querySelector('.icon-close'),
   drawer: document.querySelector('#drawer'),
-  hero: document.querySelector('.hero'),
+  hero: document.querySelector('hero-bar'),
   content: document.querySelector('#maincontent'),
 });
 

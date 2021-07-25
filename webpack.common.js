@@ -38,9 +38,7 @@ module.exports = {
         test: /\.scss$/,
         // exclude: /node_modules/,
         use: [
-          {
-            loader: 'style-loader',
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -48,12 +46,15 @@ module.exports = {
             },
           },
           {
+            loader: 'postcss-loader',
+          },
+          {
             loader: 'sass-loader',
           },
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.(png|svg|jpg|jpeg|gif|ttf|woff|woff2|eot|otf)$/,
         use: [
           'file-loader',
         ],
@@ -95,8 +96,8 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
+      filename: '[name].bundle.css',
+      chunkFilename: '[id].css',
     }),
   ],
   optimization: {

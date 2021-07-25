@@ -23,6 +23,8 @@ class FoodItem extends HTMLElement {
                               <div class="ph-col-12 empty"></div>
                               <div class="ph-col-12 empty"></div>
                               <div class="ph-col-6"></div>
+                              <div class="ph-col-12 empty"></div>
+                              <div class="ph-col-12 empty"></div>
                           </div>
                       </div>
                   </div>
@@ -32,9 +34,9 @@ class FoodItem extends HTMLElement {
                       <div class="ph-col-12">
                           <div class="ph-row">
                               <div class="ph-col-12 empty"></div>
-                              <div class="ph-col-8"></div>
+                              <div class="ph-col-8" style="margin-top: 0;"></div>
                               <div class="ph-col-12 empty"></div>
-                              <div class="ph-col-12"></div>
+                              <div class="ph-col-12" style="margin-top: 16px"></div>
                           </div>
                       </div>
                   </div>

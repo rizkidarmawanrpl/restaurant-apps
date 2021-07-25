@@ -3,8 +3,18 @@
 import './restaurant-item';
 
 class RestaurantList extends HTMLElement {
+  constructor() {
+    super();
+    this._limit = 0;
+  }
+
+  set limit(limit) {
+    this._limit = limit;
+  }
+
   set restaurants(restaurants) {
-    this._restaurants = restaurants;
+    const limit = this._limit;
+    this._restaurants = (limit > 0) ? restaurants.slice(0, limit) : restaurants;
     this.render();
   }
 

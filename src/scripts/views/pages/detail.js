@@ -23,7 +23,7 @@ const Detail = {
       <section class="content-detail">
         <restaurant-detail></restaurant-detail>
 
-        <favorite-restaurant-bar></favorite-restaurant-bar>
+        <!--<favorite-restaurant-bar></favorite-restaurant-bar>-->
 
         <div class="container__menu-utama">
             <h1 class="menu-utama__label">Menus</h1>
@@ -78,13 +78,15 @@ const Detail = {
     const renderFoodLoader = (count) => {
       menuFoodContainer.loaders = count;
     };
-    const renderFoodResult = (results) => {
+    const renderFoodResult = (results, limit) => {
+      menuFoodContainer.limit = limit;
       menuFoodContainer.foods = results;
     };
     const renderDrinkLoader = (count) => {
       menuDrinkContainer.loaders = count;
     };
-    const renderDrinkResult = (results) => {
+    const renderDrinkResult = (results, limit) => {
+      menuDrinkContainer.limit = limit;
       menuDrinkContainer.foods = results;
     };
 
@@ -103,7 +105,7 @@ const Detail = {
     renderRestaurantDetailLoader();
     renderFoodLoader(4);
     renderDrinkLoader(4);
-    renderCustomerReviewLoader(4);
+    renderCustomerReviewLoader(1);
 
     try {
       const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
@@ -135,9 +137,9 @@ const Detail = {
 
       renderRestaurantDetailResult(restaurantDetail);
       renderAdditionalFood(additionalFood);
-      renderFoodResult(foods);
+      renderFoodResult(foods, 4);
       renderAdditionalDrink(additionalDrink);
-      renderDrinkResult(drinks);
+      renderDrinkResult(drinks, 4);
       renderCustomerReviewResult(customerReviews);
 
       // FavoriteRestaurantButtonInitiator.init({

@@ -13,12 +13,12 @@ class CustomerReviewForm extends HTMLElement {
                 </h1>
                 <form class="form-horizontal">
                     <div class="form-item">
-                        <label class="form-label">Nama</label>
-                        <input type="text" name="name" class="form-control">
+                        <label for="name" class="form-label">Nama</label>
+                        <input type="text" name="name" id="name" class="form-control">
                     </div>
                     <div class="form-item">
-                        <label class="form-label">Review</label>
-                        <textarea name="review" class="form-control"></textarea>
+                        <label for="review" class="form-label">Review</label>
+                        <textarea name="review" id="review" class="form-control"></textarea>
                     </div>
                     <div class="form-item">
                         <button type="button" id="button-add-review" class="btn btn-primary"><i class="fa fa-send"></i> &nbsp; Kirim</button>

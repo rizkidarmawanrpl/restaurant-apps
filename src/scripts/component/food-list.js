@@ -5,10 +5,16 @@ class FoodList extends HTMLElement {
   constructor() {
     super();
     this._additionalFood = {};
+    this._limit = 0;
+  }
+
+  set limit(limit) {
+    this._limit = limit;
   }
 
   set foods(foods) {
-    this._foods = foods;
+    const limit = this._limit;
+    this._foods = (limit > 0) ? foods.slice(0, limit) : foods;
     this.render();
   }
 

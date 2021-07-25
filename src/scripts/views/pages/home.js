@@ -35,7 +35,8 @@ const Home = {
     const renderRestaurantLoader = (count) => {
       restaurantsContainer.loaders = count;
     };
-    const renderRestaurantResult = (results) => {
+    const renderRestaurantResult = (results, limit) => {
+      restaurantsContainer.limit = limit;
       restaurantsContainer.restaurants = results;
     };
     const fallbackRestaurantResult = (message) => {
@@ -47,11 +48,11 @@ const Home = {
 
     showHero();
     hideBreadcrumb();
-    renderRestaurantLoader(3);
+    renderRestaurantLoader(6);
 
     try {
       const restaurants = await RestaurantDbSource.listRestaurants();
-      renderRestaurantResult(restaurants);
+      renderRestaurantResult(restaurants, 6);
     } catch (message) {
       fallbackRestaurantResult(message);
     }
