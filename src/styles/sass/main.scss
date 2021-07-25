@@ -12,6 +12,10 @@ html {
   height: 100%;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
@@ -55,12 +59,22 @@ body {
 .btn {
   font-family: "Poppins", sans-serif;
   padding: 14px 20px;
-  color: var(--theme-color-white);
+  color: var(--theme-color-black);
   font-size: 1.2em;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
+
+  i {
+    height: 100%;
+    vertical-align: middle;
+    font-size: 1.2em;
+  }
+
+  span {
+    margin: 0 10px;
+  }
 }
 
 .btn-primary {
@@ -215,17 +229,24 @@ hero-bar {
 .hero {
   display: flex;
   align-items: center;
-  min-height: 380px;
+  // min-height: 380px;
   width: 100%;
+  height: calc(100vh - 85px);
   text-align: center;
   background-image: url("./images/heros/hero-image_4-large.jpg");
   background-position: center;
   background-color: green;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero__inner {
   margin: 0 auto;
-  max-width: 800px;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 37%);
+  display: grid;
+  place-items: center;
 }
 
 .hero__title {
@@ -328,7 +349,7 @@ restaurant-list {
   p {
     margin: 1.15em;
     font-weight: bold;
-    color: var(--theme-color-white);
+    color: var(--theme-color-black);
     text-align: center;
   }
 }
@@ -345,6 +366,8 @@ restaurant-list {
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -478,6 +501,8 @@ food-item {
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -539,7 +564,7 @@ footer-bar {
   p {
     font-size: 14px;
     padding: 1.3em;
-    color: var(--theme-color-white);
+    color: var(--theme-color-black);
 
     span {
       text-transform: uppercase;
@@ -712,6 +737,10 @@ favorite-restaurant-bar {
 .restaurant-favorite__button {
   button {
     cursor: pointer;
+
+    i.like {
+      color: var(--theme-color-white);
+    }
 
     i.liked {
       color: var(--theme-color-red);

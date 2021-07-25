@@ -4,19 +4,22 @@
             "id": "6c7bqjgi84kcowlqdz",
             "label": "Home",
             "link": "#/",
-            "target": ""
+            "target": "",
+            "rel": ""
         },
         {
             "id": "ljx8i0qu2uckcowlqdz",
             "label": "Favorite",
             "link": "#/favorite-restaurant",
-            "target": ""
+            "target": "",
+            "rel": ""
         },
         {
             "id": "fe8bbxoazddkcowlqdz",
             "label": "About Us",
             "link": "https://www.linkedin.com/in/rizki-darmawan-018034124/",
-            "target": "_blank"
+            "target": "_blank",
+            "rel": "noreferrer"
         }
     ]
 }

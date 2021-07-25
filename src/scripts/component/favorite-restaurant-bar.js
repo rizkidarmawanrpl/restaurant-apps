@@ -29,7 +29,7 @@ class FavoriteRestaurantBar extends HTMLElement {
         <div class="restaurant-favorite__item">
             <div class="restaurant-favorite__button">
                 <button aria-label="Resto favorite" id="favorite-button" class="btn btn-primary">
-                    <i class="fa fa-heart" aria-hidden="true"></i> &nbsp; Suka
+                    <i class="material-icons liked" aria-hidden="true">favorite-outline</i> <span>Suka</span>
                 </button>
             </div>
         </div>
@@ -47,7 +47,7 @@ class FavoriteRestaurantBar extends HTMLElement {
         <div class="restaurant-favorite__item">
             <div class="restaurant-favorite__button">
                 <button aria-label="Bukan resto favorite" id="favorite-button" class="btn btn-primary">
-                    <i class="fa fa-heart liked" aria-hidden="true"></i> &nbsp; Suka
+                    <i class="material-icons liked" aria-hidden="true">favorite</i> <span>Nggak</span>
                 </button>
             </div>
         </div>

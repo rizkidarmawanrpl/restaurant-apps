@@ -9,7 +9,7 @@ class MenuItem extends HTMLElement {
     const menu = this._menu;
 
     this.innerHTML = `
-        <a href="${menu.link}" target="${menu.target}">${menu.label}</a>
+        <a href="${menu.link}" target="${menu.target}" rel="${menu.rel}">${menu.label}</a>
     `;
   }
 }
