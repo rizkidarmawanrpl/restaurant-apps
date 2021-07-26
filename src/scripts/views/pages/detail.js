@@ -9,6 +9,7 @@ import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import {
   hideHero,
   dataBreadcrumbRestaurant,
+  loaderBreadcrumb,
   showBreadcrumb,
   additionalFoodMenu,
   additionalDrinkMenu,
@@ -23,7 +24,7 @@ const Detail = {
       <section class="content-detail">
         <restaurant-detail></restaurant-detail>
 
-        <!--<favorite-restaurant-bar></favorite-restaurant-bar>-->
+        <favorite-restaurant-bar></favorite-restaurant-bar>
 
         <div class="container__menu-utama">
             <h1 class="menu-utama__label">Menus</h1>
@@ -54,10 +55,12 @@ const Detail = {
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
+    const breadcrumbContainer = document.querySelector('breadcrumb-list');
     const restaurantDetailContainer = document.querySelector('restaurant-detail');
     const menuFoodContainer = document.querySelector('#menu-food');
     const menuDrinkContainer = document.querySelector('#menu-drink');
     const customerReviewContainer = document.querySelector('customer-review-list');
+    const likeButtonContainer = document.querySelector('favorite-restaurant-bar');
     const renderRestaurantDetailLoader = () => {
       restaurantDetailContainer.renderLoader();
     };
@@ -93,19 +96,25 @@ const Detail = {
     const renderCustomerReviewLoader = (count) => {
       customerReviewContainer.loaders = count;
     };
-    const renderCustomerReviewResult = (results) => {
+    const renderCustomerReviewResult = (results, limit) => {
       if (results.length > 0) {
+        customerReviewContainer.limit = limit;
         customerReviewContainer.reviews = results;
       } else {
         customerReviewContainer.renderEmpty();
       }
     };
+    const renderFavoriteRestaurantBar = () => {
+      likeButtonContainer.renderLoader();
+    };
 
     hideHero();
+    loaderBreadcrumb(breadcrumbContainer);
     renderRestaurantDetailLoader();
-    renderFoodLoader(4);
-    renderDrinkLoader(4);
-    renderCustomerReviewLoader(1);
+    renderFavoriteRestaurantBar();
+    renderFoodLoader(2);
+    renderDrinkLoader(2);
+    renderCustomerReviewLoader(2);
 
     try {
       const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
@@ -126,21 +135,24 @@ const Detail = {
       const additionalFood = additionalFoodMenu(name);
       const additionalDrink = additionalDrinkMenu(name);
 
-      showBreadcrumb([
-        dataBreadcrumbRestaurant,
-        {
-          link: 'javascript:;',
-          label: name,
-          class: 'active',
-        },
-      ]);
+      showBreadcrumb(
+        breadcrumbContainer,
+        [
+          dataBreadcrumbRestaurant,
+          {
+            link: 'javascript:;',
+            label: name,
+            class: 'active',
+          },
+        ]
+      );
 
       renderRestaurantDetailResult(restaurantDetail);
       renderAdditionalFood(additionalFood);
-      renderFoodResult(foods, 4);
+      renderFoodResult(foods, 2);
       renderAdditionalDrink(additionalDrink);
-      renderDrinkResult(drinks, 4);
-      renderCustomerReviewResult(customerReviews);
+      renderDrinkResult(drinks, 2);
+      renderCustomerReviewResult(customerReviews, 2);
 
       // FavoriteRestaurantButtonInitiator.init({
       //   favoriteButtonContainer: document.querySelector('favorite-restaurant-bar'),
@@ -155,7 +167,7 @@ const Detail = {
       // });
 
       LikeButtonPresenter.init({
-        likeButtonContainer: document.querySelector('favorite-restaurant-bar'),
+        likeButtonContainer,
         favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant: {
           id,

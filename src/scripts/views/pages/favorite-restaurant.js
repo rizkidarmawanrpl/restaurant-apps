@@ -16,8 +16,11 @@ const FavoriteRestaurant = {
   },
 
   async afterRender() {
-    const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+    const breadcrumbContainer = document.querySelector('breadcrumb-list');
     const restaurantsContainer = document.querySelector('restaurant-list');
+    const renderEmptyLoader = () => {
+      restaurantsContainer.renderEmptyLoader();
+    };
     const renderRestaurantResult = (results) => {
       if (results.length > 0) {
         restaurantsContainer.restaurants = results;
@@ -28,16 +31,27 @@ const FavoriteRestaurant = {
 
     hideHero();
 
-    showBreadcrumb([
-      dataBreadcrumbRestaurant,
-      {
-        link: 'javascript:;',
-        label: 'Favorited Restaurant',
-        class: 'active',
-      },
-    ]);
+    showBreadcrumb(
+      breadcrumbContainer,
+      [
+        dataBreadcrumbRestaurant,
+        {
+          link: 'javascript:;',
+          label: 'Favorited Restaurant',
+          class: 'active',
+        },
+      ]
+    );
 
-    renderRestaurantResult(restaurants);
+    renderEmptyLoader();
+
+    try {
+      const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+      renderRestaurantResult(restaurants);
+    } catch(message) {
+      console.log(message);
+      restaurantsContainer.renderEmpty();
+    }
   },
 };
 

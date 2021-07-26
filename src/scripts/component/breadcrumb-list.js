@@ -8,6 +8,8 @@ class BreadcrumbList extends HTMLElement {
   }
 
   renderLoader() {
+    this.innerHTML = '';
+    
     const breadcrumbItemElement = document.createElement('breadcrumb-item');
     breadcrumbItemElement.renderLoader();
     this.appendChild(breadcrumbItemElement);

@@ -22,6 +22,7 @@ const RestaurantList = {
   },
 
   async afterRender() {
+    const breadcrumbContainer = document.querySelector('breadcrumb-list');
     const restaurantsContainer = document.querySelector('restaurant-list');
     const renderRestaurantLoader = (count) => {
       restaurantsContainer.loaders = count;
@@ -36,14 +37,17 @@ const RestaurantList = {
     hideHero();
     renderRestaurantLoader(3);
 
-    showBreadcrumb([
-      dataBreadcrumbHome,
-      {
-        link: 'javascript:;',
-        label: 'Explore Restaurant',
-        class: 'active',
-      },
-    ]);
+    showBreadcrumb(
+      breadcrumbContainer,
+      [
+        dataBreadcrumbHome,
+        {
+          link: 'javascript:;',
+          label: 'Explore Restaurant',
+          class: 'active',
+        },
+      ]
+    );
 
     try {
       const restaurants = await RestaurantDbSource.listRestaurants();

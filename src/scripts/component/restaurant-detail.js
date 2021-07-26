@@ -11,14 +11,14 @@ class RestaurantDetail extends HTMLElement {
 
   renderLoader() {
     this.innerHTML = `
-        <!--<div class="restaurant-detail__thumbnail">
+        <div class="restaurant-detail__thumbnail">
             <div class="ph-item">
                 <div class="ph-col-12">
                     <div class="ph-picture"></div>
                 </div>
             </div>
-        </div>-->
-        <!--<div class="restaurant-detail__content">
+        </div>
+        <div class="restaurant-detail__content">
             <div class="restaurant-detail__title">
                 <div class="ph-item">
                     <div class="ph-col-12">
@@ -62,8 +62,8 @@ class RestaurantDetail extends HTMLElement {
                     </div>
                 </div>
             </div>
-        </div>-->
-        <!--<div class="restaurant-detail__address">
+        </div>
+        <div class="restaurant-detail__address">
             <div class="restaurant-detail__address-title">
                 <div class="ph-item">
                     <div class="ph-col-12">
@@ -87,7 +87,7 @@ class RestaurantDetail extends HTMLElement {
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
     `;
   }
 
@@ -101,10 +101,11 @@ class RestaurantDetail extends HTMLElement {
     const restaurant = this._restaurant;
 
     this.innerHTML = `
-        <!--<div class="restaurant-detail__thumbnail">
-            <img class="lazyload" data-src="${CONFIG.BASE_SMALL_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}"></img>
-        </div>-->
-        <!--<div class="restaurant-detail__content">
+        <div class="restaurant-detail__thumbnail">
+            <div class="image-thumbnail" style="background-image: url('${CONFIG.BASE_SMALL_IMAGE_URL + restaurant.pictureId}');"></div>
+            <!--<img class="lazyload" data-src="${CONFIG.BASE_SMALL_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">-->
+        </div>
+        <div class="restaurant-detail__content">
             <h1 class="restaurant-detail__title">${restaurant.name}</h1>
             <div class="restaurant-detail__category">
                 ${restaurant.categories.map((categorie) => `<span>${categorie.name}</span>`).join('')}
@@ -115,13 +116,13 @@ class RestaurantDetail extends HTMLElement {
             <p class="restaurant-detail__description">
                 ${restaurant.description}    
             </p>
-        </div>-->
-        <!--<div class="restaurant-detail__address">
+        </div>
+        <div class="restaurant-detail__address">
             <h1 class="restaurant-detail__address-title">Kota</h1>
             <p>${restaurant.city}</p>
             <h1 class="restaurant-detail__address-title">Alamat</h1>
             <p>${restaurant.address}</p>
-        </div>-->
+        </div>
     `;
   }
 }

@@ -17,20 +17,24 @@ const ViralFoodList = {
 
   async afterRender() {
     const viralFoods = ViralFood.data;
+    const breadcrumbContainer = document.querySelector('breadcrumb-list');
     const viralFoodsContainer = document.querySelector('food-list');
     const renderViralFoodResult = (results) => {
       viralFoodsContainer.foods = results;
     };
 
     hideHero();
-    showBreadcrumb([
-      dataBreadcrumbRestaurant,
-      {
-        link: 'javascript:;',
-        label: 'Viral Foods',
-        class: 'active',
-      },
-    ]);
+    showBreadcrumb(
+      breadcrumbContainer,
+      [
+        dataBreadcrumbRestaurant,
+        {
+          link: 'javascript:;',
+          label: 'Viral Foods',
+          class: 'active',
+        },
+      ]
+    );
 
     renderViralFoodResult(viralFoods);
   },

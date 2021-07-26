@@ -33,6 +33,10 @@ class RestaurantList extends HTMLElement {
     }
   }
 
+  renderEmptyLoader() {
+    this.innerHTML = '<p class="no-data">Kuy! Tambahin resto favorite kamu sekarang ...</p>';
+  }
+
   renderError(message) {
     this.innerHTML = '';
     this.innerHTML += `<p class="no-data">${message}</p>`;

@@ -30,6 +30,7 @@ const Home = {
 
   async afterRender() {
     const viralFoods = ViralFood.data;
+    const breadcrumbContainer = document.querySelector('breadcrumb-list');
     const restaurantsContainer = document.querySelector('restaurant-list');
     const viralFoodsContainer = document.querySelector('food-list');
     const renderRestaurantLoader = (count) => {
@@ -47,7 +48,7 @@ const Home = {
     };
 
     showHero();
-    hideBreadcrumb();
+    hideBreadcrumb(breadcrumbContainer);
     renderRestaurantLoader(6);
 
     try {

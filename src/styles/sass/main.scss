@@ -294,6 +294,18 @@ restaurant-detail,
   text-align: center;
 }
 
+.container__menu-utama {
+  margin: 25px auto 0;
+}
+
+.container__customer-review {
+  margin: 25px auto;
+}
+
+.container__restaurant {
+  margin: 0 auto;
+}
+
 .restaurant__label {
   font-size: 32px;
   font-weight: lighter;
@@ -424,13 +436,17 @@ restaurant-list {
   opacity: 1;
 }
 
+.restaurant__footer {
+  margin-bottom: 4em;
+}
+
 /*
  * Viral foods
  */
 
 .container__viral-food {
   width: 100%;
-  margin: 60px auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -628,10 +644,19 @@ restaurant-detail {
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-  img {
+  img, .image-thumbnail {
     width: 100%;
     height: 100%;
+  }
+
+  img {
     object-fit: cover;
+  }
+
+  .image-thumbnail {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
@@ -707,6 +732,7 @@ favorite-restaurant-bar {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 25px;
   position: sticky;
   bottom: 0;
   z-index: 99;
@@ -755,7 +781,7 @@ favorite-restaurant-bar {
 
   &::after {
     content: "";
-    margin-top: 16px;
+    margin-top: 10px;
     display: block;
     border-bottom: 1px solid var(--theme-color-yellow);
   }
@@ -810,7 +836,7 @@ favorite-restaurant-bar {
 
   &::after {
     content: "";
-    margin-top: 16px;
+    margin-top: 10px;
     display: block;
     border-bottom: 1px solid var(--theme-color-yellow);
   }
@@ -1073,6 +1099,68 @@ hero-bar {
 
   .ph-picture {
     height: calc(100vh - 85px);
+  }
+}
+
+favorite-restaurant-bar {
+  .ph-item {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.restaurant-favorite__ {
+  &title, &subtitle {
+    .ph-item {
+      .ph-col-12 {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  &title {
+    .ph-row {
+      margin-top: 5px;
+
+      .ph-col-12 {
+        margin: 0;
+      }
+    }
+  }
+
+  &subtitle {
+    .ph-row {
+      .ph-col-6 {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &button {
+    .ph-item {
+      .ph-col-12 {
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 0;
+  
+        .big {
+          width: 117px;
+          height: 50px;
+          border-radius: 5px;
+          margin-top: 9px;
+        }
+      }
+    }
+  }
+}
+
+.restaurant-detail__ {
+  &title, &category, &rating {
+    .ph-item {
+      margin-top: 10px;
+    }
   }
 }
 

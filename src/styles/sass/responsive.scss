@@ -9,10 +9,10 @@
 }
 
 @media screen and (max-width: 425px) {
-  .restaurant-item__thumbnail,
-  .viral-food-item__thumbnail {
-    height: 150px;
-  }
+  // .restaurant-item__thumbnail,
+  // .viral-food-item__thumbnail {
+  //   height: 150px;
+  // }
 
   search-restaurant-form {
     .form-control,
@@ -24,6 +24,37 @@
     .btn {
       display: none;
     }
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .viral-food-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 16px;
+  }
+
+  .viral-food-item__thumbnail {
+    width: 100px;
+    height: 100%;
+    border-bottom-left-radius: 0;
+  }
+
+  .viral-food-item__content {
+    padding: 0 16px 10px 0;
+  }
+
+  .viral-food-item__title {
+    font-size: 1.25em;
+  }
+
+  .viral-food-item__resto {
+    font-size: 1.0em;
+  }
+
+  .viral-food-item__description {
+    font-size: 1.0em;
+    margin-top: 5px;
   }
 }
 
@@ -114,6 +145,10 @@
     padding: 32px;
   }
 
+  .menu-utama {
+    padding: 0 32px;
+  }
+
   .restaurant-detail__content {
     padding-bottom: 0;
   }
@@ -148,11 +183,41 @@
   .restaurant-favorite__subtitle {
     font-size: 1em;
   }
+
+  /**
+   * Placeholder custom
+   */
+
+  .restaurant-favorite__title {
+    .ph-item {
+      .ph-col-12 {
+        .ph-row {
+          .ph-col-12 {
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .restaurant-favorite__button {
+    .ph-item {
+      .ph-col-12 {
+        .big {
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+
+  .restaurant-detail__thumbnail {
+    height: 200px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .hero {
-    background-image: url("./images/heros/hero-image_4-small.jpg");
+    background-image: url("./images/heros/hero-image_4-large.jpg");
   }
 }
 

@@ -10,6 +10,44 @@ class FavoriteRestaurantBar extends HTMLElement {
     this.render();
   }
 
+  renderLoader() {
+    this.innerHTML = `
+      <div class="restaurant-favorite__item">
+          <div class="restaurant-favorite__title">
+            <div class="ph-item">
+              <div class="ph-col-12">
+                  <div class="ph-row">
+                      <div class="ph-col-12"></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="restaurant-favorite__item">
+          <div class="restaurant-favorite__subtitle">
+            <div class="ph-item">
+              <div class="ph-col-12">
+                  <div class="ph-row">
+                      <div class="ph-col-6"></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="restaurant-favorite__item">
+          <div class="restaurant-favorite__button">
+            <div class="ph-item">
+              <div class="ph-col-12">
+                  <div class="ph-row">
+                      <div class="ph-col-12 big"></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    `;
+  }
+
   render() {
     if (this._favorited) {
       this.renderFavorited();
