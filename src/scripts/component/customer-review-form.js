@@ -21,7 +21,7 @@ class CustomerReviewForm extends HTMLElement {
                         <textarea name="review" id="review" class="form-control"></textarea>
                     </div>
                     <div class="form-item">
-                        <button type="button" id="button-add-review" class="btn btn-primary"><i class="fa fa-send"></i> &nbsp; Kirim</button>
+                        <button type="button" id="button-add-review" class="btn btn-primary">Kirim &nbsp; <i class="material-icons">send</i></button>
                     </div>
                 </form>
             </div>

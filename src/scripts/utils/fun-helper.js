@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const initialName = (str) => {
   const mystr = str.split(' ');
   let result = mystr[0].substr(0, 1);
@@ -32,7 +33,7 @@ const dataBreadcrumbRestaurant = {
 
 const loaderBreadcrumb = (breadcrumbContainer) => {
   breadcrumbContainer.renderLoader();
-}
+};
 
 const hideBreadcrumb = (breadcrumbContainer) => {
   breadcrumbContainer.innerHTML = '';
@@ -61,6 +62,23 @@ const additionalDrinkMenu = (restaurant) => ({
   description: 'Lorem ipsum dolor sit amet',
 });
 
+const toggleIconAll = (objek) => `
+    Semua ${objek} <i class="material-icons">chevron_right</i>
+`;
+
+const toggleIconLimit = (objek) => `
+    Sedikit ${objek} <i class="material-icons">expand_more</i>
+`;
+
+const tempToggleIconAllFoods = () => toggleIconAll('Makanan');
+const tempToggleIconLimitFoods = () => toggleIconLimit('Makanan');
+
+const tempToggleIconAllDrinks = () => toggleIconAll('Minuman');
+const tempToggleIconLimitDrinks = () => toggleIconLimit('Minuman');
+
+const tempToggleIconAllReviews = () => toggleIconAll('Review');
+const tempToggleIconLimitReviews = () => toggleIconLimit('Review');
+
 export {
   initialName,
   loaderBreadcrumb,
@@ -73,4 +91,10 @@ export {
   showNotification,
   additionalFoodMenu,
   additionalDrinkMenu,
+  tempToggleIconAllFoods,
+  tempToggleIconLimitFoods,
+  tempToggleIconAllDrinks,
+  tempToggleIconLimitDrinks,
+  tempToggleIconAllReviews,
+  tempToggleIconLimitReviews,
 };

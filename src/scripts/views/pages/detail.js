@@ -13,10 +13,17 @@ import {
   showBreadcrumb,
   additionalFoodMenu,
   additionalDrinkMenu,
+  tempToggleIconAllFoods,
+  tempToggleIconLimitFoods,
+  tempToggleIconAllDrinks,
+  tempToggleIconLimitDrinks,
+  tempToggleIconAllReviews,
+  tempToggleIconLimitReviews,
 } from '../../utils/fun-helper';
 // import FavoriteRestaurantButtonInitiator from '../../utils/favorite-restaurant-button-initiator';
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import ReviewInitiator from '../../utils/review-initiator';
+import LinkAllButtonPresenter from '../../utils/link-all-button-presenter';
 
 const Detail = {
   async render() {
@@ -32,11 +39,17 @@ const Detail = {
                 <div class="menu-utama__food">
                     <h1 class="menu-utama__title">Makanan</h1>
                     <food-list id="menu-food" class="food-list"></food-list>
+                    <div class="link-all">
+                      <button type="button" class="btn btn-primary" id="all-foods" data-toggle="false">Semua Makanan <i class="material-icons">chevron_right</i></button>
+                    </div>
                 </div>
 
                 <div class="menu-utama__drink">
                     <h1 class="menu-utama__title">Minuman</h1>
                     <food-list id="menu-drink" class="food-list"></food-list>
+                    <div class="link-all">
+                      <button type="button" class="btn btn-primary" id="all-drinks" data-toggle="false">Semua Minuman <i class="material-icons">chevron_right</i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,6 +57,9 @@ const Detail = {
         <div class="container__customer-review">
             <h1 class="customer-review__label">Customer Reviews</h1>
             <customer-review-list></customer-review-list>
+            <div class="link-all">
+              <button type="button" class="btn btn-primary" id="all-reviews" data-toggle="false">Semua Review <i class="material-icons">chevron_right</i></button>
+            </div>
         </div>
     </section>
 
@@ -61,6 +77,12 @@ const Detail = {
     const menuDrinkContainer = document.querySelector('#menu-drink');
     const customerReviewContainer = document.querySelector('customer-review-list');
     const likeButtonContainer = document.querySelector('favorite-restaurant-bar');
+    const allFoodsContainer = document.querySelector('#all-foods');
+    const allDrinksContainer = document.querySelector('#all-drinks');
+    const allReviewsContainer = document.querySelector('#all-reviews');
+    const limitFoods = 2;
+    const limitDrinks = 2;
+    const limitReviews = 2;
     const renderRestaurantDetailLoader = () => {
       restaurantDetailContainer.renderLoader();
     };
@@ -112,9 +134,9 @@ const Detail = {
     loaderBreadcrumb(breadcrumbContainer);
     renderRestaurantDetailLoader();
     renderFavoriteRestaurantBar();
-    renderFoodLoader(2);
-    renderDrinkLoader(2);
-    renderCustomerReviewLoader(2);
+    renderFoodLoader(limitFoods);
+    renderDrinkLoader(limitDrinks);
+    renderCustomerReviewLoader(limitReviews);
 
     try {
       const restaurantDetail = await RestaurantDbSource.detailRestaurant(url.id);
@@ -129,6 +151,8 @@ const Detail = {
         menus,
         customerReviews,
       } = restaurantDetail;
+      // reverse array to newest
+      customerReviews.reverse();
 
       const { foods, drinks } = menus;
 
@@ -144,15 +168,15 @@ const Detail = {
             label: name,
             class: 'active',
           },
-        ]
+        ],
       );
 
       renderRestaurantDetailResult(restaurantDetail);
       renderAdditionalFood(additionalFood);
-      renderFoodResult(foods, 2);
+      renderFoodResult(foods, limitFoods);
       renderAdditionalDrink(additionalDrink);
-      renderDrinkResult(drinks, 2);
-      renderCustomerReviewResult(customerReviews, 2);
+      renderDrinkResult(drinks, limitDrinks);
+      renderCustomerReviewResult(customerReviews, limitReviews);
 
       // FavoriteRestaurantButtonInitiator.init({
       //   favoriteButtonContainer: document.querySelector('favorite-restaurant-bar'),
@@ -185,6 +209,36 @@ const Detail = {
         inputReview: document.querySelector('[name="review"]'),
         button: document.querySelector('#button-add-review'),
         customerReviewContainer,
+      });
+
+      allFoodsContainer.addEventListener('click', () => {
+        LinkAllButtonPresenter.init({
+          buttonContainer: allFoodsContainer,
+          callbackAll: () => renderFoodResult(foods, 0),
+          callbackLimit: () => renderFoodResult(foods, limitFoods),
+          iconAll: tempToggleIconAllFoods,
+          iconLimit: tempToggleIconLimitFoods,
+        });
+      });
+
+      allDrinksContainer.addEventListener('click', () => {
+        LinkAllButtonPresenter.init({
+          buttonContainer: allDrinksContainer,
+          callbackAll: () => renderDrinkResult(drinks, 0),
+          callbackLimit: () => renderDrinkResult(drinks, limitDrinks),
+          iconAll: tempToggleIconAllDrinks,
+          iconLimit: tempToggleIconLimitDrinks,
+        });
+      });
+
+      allReviewsContainer.addEventListener('click', () => {
+        LinkAllButtonPresenter.init({
+          buttonContainer: allReviewsContainer,
+          callbackAll: () => renderCustomerReviewResult(customerReviews, 0),
+          callbackLimit: () => renderCustomerReviewResult(customerReviews, limitReviews),
+          iconAll: tempToggleIconAllReviews,
+          iconLimit: tempToggleIconLimitReviews,
+        });
       });
     } catch (message) {
       fallbackRestaurantDetailResult(message);

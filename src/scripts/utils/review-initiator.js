@@ -40,6 +40,8 @@ const ReviewInitiator = {
       try {
         const customerReviews = await RestaurantDbSource.addReview(formdata);
 
+        customerReviews.reverse();
+
         this._customerReviewContainer.reviews = customerReviews;
 
         showNotification('Review kamu berhasil disimpan.');

@@ -62,31 +62,3 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.amOnPage('/#/favorite-restaurant');
   I.see('Kuy! Tambahin resto favorite kamu sekarang ...', '.no-data');
 });
-
-Scenario('customer review', async ({ I }) => {
-  I.amOnPage('/');
-
-  I.seeElement('.restaurant-item__title a');
-
-  const firstRestaurant = locate('.restaurant-item__title a').first();
-  I.click(firstRestaurant);
-
-  I.seeElement('customer-review-form');
-
-  const name = 'Rizki Darmawan';
-  const review = 'Lorem ipsum dolor sit amet.';
-
-  I.fillField('name', name);
-  I.fillField('review', review);
-
-  I.click('#button-add-review');
-
-  I.waitForElement('customer-review-item', 10);
-
-  // pause();
-
-  I.see(name, locate('.customer-review__item-name').last());
-  I.see(review, locate('.customer-review__item-review').last());
-
-  I.amOnPage('/');
-});

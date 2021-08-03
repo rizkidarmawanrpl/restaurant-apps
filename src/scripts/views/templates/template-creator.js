@@ -327,6 +327,17 @@ const createPlaceholderViralFoodTemplate = () => `
     </article>
 `;
 
+const toggleIconAll = (objek) => `
+    Semua ${objek} <i class="material-icons">chevron_right</i>
+`;
+
+const toggleIconLimit = (objek) => `
+    Sedikit ${objek} <i class="material-icons">expand_more</i>
+`;
+
+const createToggleIconAllFoodsTemplate = () => toggleIconAll('Makanan');
+const createToggleIconLimitFoodsTemplate = () => toggleIconLimit('Makanan');
+
 export {
   createMenuTemplate,
   createRestaurantItemTemplate,
@@ -342,4 +353,6 @@ export {
   createPlaceholderDetailTemplate,
   createPlaceholderCustomerReviewTemplate,
   createPlaceholderViralFoodTemplate,
+  createToggleIconAllFoodsTemplate,
+  createToggleIconLimitFoodsTemplate,
 };
