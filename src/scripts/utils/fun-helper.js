@@ -51,13 +51,19 @@ const showNotification = (teks) => {
 };
 
 const additionalFoodMenu = (restaurant) => ({
-  pictureId: 'https://via.placeholder.com/184x124?text=Menu%20Makanan',
+  pictureId: {
+    small: 'https://via.placeholder.com/184x124?text=Menu%20Makanan',
+    xSmall: 'https://via.placeholder.com/184x124?text=Menu%20Makanan',
+  },
   restaurant,
   description: 'Lorem ipsum dolor sit amet',
 });
 
 const additionalDrinkMenu = (restaurant) => ({
-  pictureId: 'https://via.placeholder.com/184x124?text=Menu%20Minuman',
+  pictureId: {
+    small: 'https://via.placeholder.com/184x124?text=Menu%20Minuman',
+    xSmall: 'https://via.placeholder.com/184x124?text=Menu%20Minuman',
+  },
   restaurant,
   description: 'Lorem ipsum dolor sit amet',
 });

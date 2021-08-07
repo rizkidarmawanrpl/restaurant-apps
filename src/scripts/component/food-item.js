@@ -53,8 +53,8 @@ class FoodItem extends HTMLElement {
         <article class="viral-food-item">
             <div class="viral-food-item__thumbnail">
                 <picture>
-                    <source media="(max-width: 600px)" data-srcset="${food.pictureId}">
-                    <img class="lazyload" data-src="${food.pictureId}" alt="${food.name}"></img>
+                    <source media="(max-width: 499px)" data-srcset="${food.pictureId.xSmall}">
+                    <img class="lazyload" data-src="${food.pictureId.small}" alt="${food.name}"></img>
                 </picture>
             </div>
             <div class="viral-food-item__content">
