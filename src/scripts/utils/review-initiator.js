@@ -42,6 +42,8 @@ const ReviewInitiator = {
 
         customerReviews.reverse();
 
+        window.localStorage.setItem('customerReviews', JSON.stringify(customerReviews));
+
         this._customerReviewContainer.reviews = customerReviews;
 
         showNotification('Review kamu berhasil disimpan.');

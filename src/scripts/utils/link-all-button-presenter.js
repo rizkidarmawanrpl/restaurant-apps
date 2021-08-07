@@ -31,7 +31,7 @@ const LinkAllButtonPresenter = {
 
     const button = document.querySelector(`#${this._buttonId}`);
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const dataToggle = button.dataset.toggle;
 
       if (dataToggle === 'false') {

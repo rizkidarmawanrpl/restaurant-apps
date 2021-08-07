@@ -223,11 +223,19 @@ const Detail = {
         iconLimit: tempToggleIconLimitDrinks,
       });
 
+      window.localStorage.setItem('customerReviews', JSON.stringify(customerReviews));
+
+      const reRenderCustomerReviewResult = (reLimitReviews) => {
+        let reCustomerReviews = window.localStorage.getItem('customerReviews');
+        reCustomerReviews = JSON.parse(reCustomerReviews);
+
+        renderCustomerReviewResult(reCustomerReviews, reLimitReviews);
+      };
       LinkAllButtonPresenter.init({
         allLinkContainer: allReviewsContainer,
         buttonData: { id: 'all-reviews', text: tempToggleIconAllReviews },
-        callbackAll: () => renderCustomerReviewResult(customerReviews, 0),
-        callbackLimit: () => renderCustomerReviewResult(customerReviews, limitReviews),
+        callbackAll: () => reRenderCustomerReviewResult(0),
+        callbackLimit: () => reRenderCustomerReviewResult(limitReviews),
         iconAll: tempToggleIconAllReviews,
         iconLimit: tempToggleIconLimitReviews,
       });
