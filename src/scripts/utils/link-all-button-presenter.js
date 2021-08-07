@@ -48,8 +48,6 @@ const LinkAllButtonPresenter = {
     buttonContainer.dataset.toggle = true;
     this._toggleIconLimit(button, _iconLimit);
     _callbackAll();
-
-    // console.log(this._buttonId);
   },
 
   _renderLimit(button, _callbackLimit, _iconAll) {

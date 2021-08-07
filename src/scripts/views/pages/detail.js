@@ -40,18 +40,12 @@ const Detail = {
                     <h1 class="menu-utama__title">Makanan</h1>
                     <food-list id="menu-food" class="food-list"></food-list>
                     <link-all-button id="all-foods-container"></link-all-button>
-                    <!--<div class="link-all">
-                      <button type="button" class="btn btn-primary" id="all-foods" data-toggle="false">Semua Makanan <i class="material-icons">chevron_right</i></button>
-                    </div>-->
                 </div>
 
                 <div class="menu-utama__drink">
                     <h1 class="menu-utama__title">Minuman</h1>
                     <food-list id="menu-drink" class="food-list"></food-list>
                     <link-all-button id="all-drinks-container"></link-all-button>
-                    <!--<div class="link-all">
-                      <button type="button" class="btn btn-primary" id="all-drinks" data-toggle="false">Semua Minuman <i class="material-icons">chevron_right</i></button>
-                    </div>-->
                 </div>
             </div>
         </div>
@@ -60,9 +54,6 @@ const Detail = {
             <h1 class="customer-review__label">Customer Reviews</h1>
             <customer-review-list></customer-review-list>
             <link-all-button id="all-reviews-container"></link-all-button">
-            <!--<div class="link-all">
-              <button type="button" class="btn btn-primary" id="all-reviews" data-toggle="false">Semua Review <i class="material-icons">chevron_right</i></button>
-            </div>-->
         </div>
     </section>
 
@@ -80,9 +71,6 @@ const Detail = {
     const menuDrinkContainer = document.querySelector('#menu-drink');
     const customerReviewContainer = document.querySelector('customer-review-list');
     const likeButtonContainer = document.querySelector('favorite-restaurant-bar');
-    // const allFoodsContainer = document.querySelector('#all-foods');
-    // const allDrinksContainer = document.querySelector('#all-drinks');
-    // const allReviewsContainer = document.querySelector('#all-reviews');
     const allFoodsContainer = document.querySelector('#all-foods-container');
     const allDrinksContainer = document.querySelector('#all-drinks-container');
     const allReviewsContainer = document.querySelector('#all-reviews-container');
@@ -217,7 +205,6 @@ const Detail = {
         customerReviewContainer,
       });
 
-      // allFoodsContainer.addEventListener('click', () => {
       LinkAllButtonPresenter.init({
         allLinkContainer: allFoodsContainer,
         buttonData: { id: 'all-foods', text: tempToggleIconAllFoods },
@@ -226,9 +213,7 @@ const Detail = {
         iconAll: tempToggleIconAllFoods,
         iconLimit: tempToggleIconLimitFoods,
       });
-      // });
 
-      // allDrinksContainer.addEventListener('click', () => {
       LinkAllButtonPresenter.init({
         allLinkContainer: allDrinksContainer,
         buttonData: { id: 'all-drinks', text: tempToggleIconAllDrinks },
@@ -237,9 +222,7 @@ const Detail = {
         iconAll: tempToggleIconAllDrinks,
         iconLimit: tempToggleIconLimitDrinks,
       });
-      // });
 
-      // allReviewsContainer.addEventListener('click', () => {
       LinkAllButtonPresenter.init({
         allLinkContainer: allReviewsContainer,
         buttonData: { id: 'all-reviews', text: tempToggleIconAllReviews },
@@ -248,7 +231,6 @@ const Detail = {
         iconAll: tempToggleIconAllReviews,
         iconLimit: tempToggleIconLimitReviews,
       });
-      // });
     } catch (message) {
       fallbackRestaurantDetailResult(message);
     }
