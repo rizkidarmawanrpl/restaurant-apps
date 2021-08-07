@@ -1,42 +1,75 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
+import '../component/link-all-button';
+
 const LinkAllButtonPresenter = {
   init({
-    buttonContainer,
+    allLinkContainer,
+    buttonData: { id, text },
     callbackAll,
     callbackLimit,
     iconAll,
     iconLimit,
   }) {
-    this._buttonContainer = buttonContainer;
-    this._callbackAll = callbackAll;
-    this._callbackLimit = callbackLimit;
-    this._iconAll = iconAll;
-    this._iconLimit = iconLimit;
+    this._allLinkContainer = allLinkContainer;
+    this._buttonId = id;
+    this._buttonText = text();
 
-    this._renderButton();
+    const _callbackAll = callbackAll;
+    const _callbackLimit = callbackLimit;
+    const _iconAll = iconAll;
+    const _iconLimit = iconLimit;
+
+    this._renderButton(_callbackAll, _callbackLimit, _iconAll, _iconLimit);
   },
 
-  _renderButton() {
-    const dataToggle = this._buttonContainer.dataset.toggle;
+  _renderButton(_callbackAll, _callbackLimit, _iconAll, _iconLimit) {
+    this._allLinkContainer.buttons = {
+      id: this._buttonId,
+      text: this._buttonText,
+    };
 
-    if (dataToggle === 'false') {
-      this._buttonContainer.dataset.toggle = true;
-      this._toggleIconLimit();
-      this._callbackAll();
-    } else {
-      this._buttonContainer.dataset.toggle = false;
-      this._toggleIconAll();
-      this._callbackLimit();
-    }
+    const button = document.querySelector(`#${this._buttonId}`);
+
+    button.addEventListener('click', () => {
+      const dataToggle = button.dataset.toggle;
+
+      if (dataToggle === 'false') {
+        this._renderAll(button, _callbackAll, _iconLimit);
+      } else {
+        this._renderLimit(button, _callbackLimit, _iconAll);
+      }
+    });
   },
 
-  _toggleIconLimit() {
-    this._buttonContainer.innerHTML = this._iconLimit();
+  _renderAll(button, _callbackAll, _iconLimit) {
+    const buttonContainer = button;
+
+    buttonContainer.dataset.toggle = true;
+    this._toggleIconLimit(button, _iconLimit);
+    _callbackAll();
+
+    // console.log(this._buttonId);
   },
 
-  _toggleIconAll() {
-    this._buttonContainer.innerHTML = this._iconAll();
+  _renderLimit(button, _callbackLimit, _iconAll) {
+    const buttonContainer = button;
+
+    buttonContainer.dataset.toggle = false;
+    this._toggleIconAll(button, _iconAll);
+    _callbackLimit();
+  },
+
+  _toggleIconLimit(button, _iconLimit) {
+    const buttonContainer = button;
+
+    buttonContainer.innerHTML = _iconLimit();
+  },
+
+  _toggleIconAll(button, _iconAll) {
+    const buttonContainer = button;
+
+    buttonContainer.innerHTML = _iconAll();
   },
 };
 

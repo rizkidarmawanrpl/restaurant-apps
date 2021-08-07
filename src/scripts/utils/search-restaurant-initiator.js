@@ -29,7 +29,11 @@ const SearchRestaurantInitiator = {
       this._restaurantsContainer.loaders = count;
     };
     const renderRestaurantResult = (results) => {
-      this._restaurantsContainer.restaurants = results;
+      if (results.length > 0) {
+        this._restaurantsContainer.restaurants = results;
+      } else {
+        this._restaurantsContainer.renderEmpty(`Resto dengan kata kunci <strong><i>${query}</i></strong> tidak ditemukan.`);
+      }
     };
 
     renderRestaurantLoader(3);

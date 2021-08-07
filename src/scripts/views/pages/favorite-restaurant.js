@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-script-url */
 import '../../component/restaurant-list';
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
@@ -25,7 +26,7 @@ const FavoriteRestaurant = {
       if (results.length > 0) {
         restaurantsContainer.restaurants = results;
       } else {
-        restaurantsContainer.renderEmpty();
+        restaurantsContainer.renderEmpty('Kuy! Tambahin resto favorite kamu sekarang ...');
       }
     };
 
@@ -40,7 +41,7 @@ const FavoriteRestaurant = {
           label: 'Favorited Restaurant',
           class: 'active',
         },
-      ]
+      ],
     );
 
     renderEmptyLoader();
@@ -48,7 +49,7 @@ const FavoriteRestaurant = {
     try {
       const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
       renderRestaurantResult(restaurants);
-    } catch(message) {
+    } catch (message) {
       console.log(message);
       restaurantsContainer.renderEmpty();
     }

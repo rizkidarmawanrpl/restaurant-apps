@@ -33,7 +33,7 @@ const ViralFoodList = {
           label: 'Viral Foods',
           class: 'active',
         },
-      ]
+      ],
     );
 
     renderViralFoodResult(viralFoods);

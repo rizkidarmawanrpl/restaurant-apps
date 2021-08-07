@@ -39,17 +39,19 @@ const Detail = {
                 <div class="menu-utama__food">
                     <h1 class="menu-utama__title">Makanan</h1>
                     <food-list id="menu-food" class="food-list"></food-list>
-                    <div class="link-all">
+                    <link-all-button id="all-foods-container"></link-all-button>
+                    <!--<div class="link-all">
                       <button type="button" class="btn btn-primary" id="all-foods" data-toggle="false">Semua Makanan <i class="material-icons">chevron_right</i></button>
-                    </div>
+                    </div>-->
                 </div>
 
                 <div class="menu-utama__drink">
                     <h1 class="menu-utama__title">Minuman</h1>
                     <food-list id="menu-drink" class="food-list"></food-list>
-                    <div class="link-all">
+                    <link-all-button id="all-drinks-container"></link-all-button>
+                    <!--<div class="link-all">
                       <button type="button" class="btn btn-primary" id="all-drinks" data-toggle="false">Semua Minuman <i class="material-icons">chevron_right</i></button>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -57,9 +59,10 @@ const Detail = {
         <div class="container__customer-review">
             <h1 class="customer-review__label">Customer Reviews</h1>
             <customer-review-list></customer-review-list>
-            <div class="link-all">
+            <link-all-button id="all-reviews-container"></link-all-button">
+            <!--<div class="link-all">
               <button type="button" class="btn btn-primary" id="all-reviews" data-toggle="false">Semua Review <i class="material-icons">chevron_right</i></button>
-            </div>
+            </div>-->
         </div>
     </section>
 
@@ -77,9 +80,12 @@ const Detail = {
     const menuDrinkContainer = document.querySelector('#menu-drink');
     const customerReviewContainer = document.querySelector('customer-review-list');
     const likeButtonContainer = document.querySelector('favorite-restaurant-bar');
-    const allFoodsContainer = document.querySelector('#all-foods');
-    const allDrinksContainer = document.querySelector('#all-drinks');
-    const allReviewsContainer = document.querySelector('#all-reviews');
+    // const allFoodsContainer = document.querySelector('#all-foods');
+    // const allDrinksContainer = document.querySelector('#all-drinks');
+    // const allReviewsContainer = document.querySelector('#all-reviews');
+    const allFoodsContainer = document.querySelector('#all-foods-container');
+    const allDrinksContainer = document.querySelector('#all-drinks-container');
+    const allReviewsContainer = document.querySelector('#all-reviews-container');
     const limitFoods = 2;
     const limitDrinks = 2;
     const limitReviews = 2;
@@ -211,35 +217,38 @@ const Detail = {
         customerReviewContainer,
       });
 
-      allFoodsContainer.addEventListener('click', () => {
-        LinkAllButtonPresenter.init({
-          buttonContainer: allFoodsContainer,
-          callbackAll: () => renderFoodResult(foods, 0),
-          callbackLimit: () => renderFoodResult(foods, limitFoods),
-          iconAll: tempToggleIconAllFoods,
-          iconLimit: tempToggleIconLimitFoods,
-        });
+      // allFoodsContainer.addEventListener('click', () => {
+      LinkAllButtonPresenter.init({
+        allLinkContainer: allFoodsContainer,
+        buttonData: { id: 'all-foods', text: tempToggleIconAllFoods },
+        callbackAll: () => renderFoodResult(foods, 0),
+        callbackLimit: () => renderFoodResult(foods, limitFoods),
+        iconAll: tempToggleIconAllFoods,
+        iconLimit: tempToggleIconLimitFoods,
       });
+      // });
 
-      allDrinksContainer.addEventListener('click', () => {
-        LinkAllButtonPresenter.init({
-          buttonContainer: allDrinksContainer,
-          callbackAll: () => renderDrinkResult(drinks, 0),
-          callbackLimit: () => renderDrinkResult(drinks, limitDrinks),
-          iconAll: tempToggleIconAllDrinks,
-          iconLimit: tempToggleIconLimitDrinks,
-        });
+      // allDrinksContainer.addEventListener('click', () => {
+      LinkAllButtonPresenter.init({
+        allLinkContainer: allDrinksContainer,
+        buttonData: { id: 'all-drinks', text: tempToggleIconAllDrinks },
+        callbackAll: () => renderDrinkResult(drinks, 0),
+        callbackLimit: () => renderDrinkResult(drinks, limitDrinks),
+        iconAll: tempToggleIconAllDrinks,
+        iconLimit: tempToggleIconLimitDrinks,
       });
+      // });
 
-      allReviewsContainer.addEventListener('click', () => {
-        LinkAllButtonPresenter.init({
-          buttonContainer: allReviewsContainer,
-          callbackAll: () => renderCustomerReviewResult(customerReviews, 0),
-          callbackLimit: () => renderCustomerReviewResult(customerReviews, limitReviews),
-          iconAll: tempToggleIconAllReviews,
-          iconLimit: tempToggleIconLimitReviews,
-        });
+      // allReviewsContainer.addEventListener('click', () => {
+      LinkAllButtonPresenter.init({
+        allLinkContainer: allReviewsContainer,
+        buttonData: { id: 'all-reviews', text: tempToggleIconAllReviews },
+        callbackAll: () => renderCustomerReviewResult(customerReviews, 0),
+        callbackLimit: () => renderCustomerReviewResult(customerReviews, limitReviews),
+        iconAll: tempToggleIconAllReviews,
+        iconLimit: tempToggleIconLimitReviews,
       });
+      // });
     } catch (message) {
       fallbackRestaurantDetailResult(message);
     }

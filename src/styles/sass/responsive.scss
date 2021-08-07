@@ -49,11 +49,11 @@
   }
 
   .viral-food-item__resto {
-    font-size: 1.0em;
+    font-size: 1em;
   }
 
   .viral-food-item__description {
-    font-size: 1.0em;
+    font-size: 1em;
     margin-top: 5px;
   }
 }
@@ -143,6 +143,10 @@
   customer-review-list,
   .container__add-review {
     padding: 32px;
+  }
+
+  customer-review-list {
+    padding-bottom: 0;
   }
 
   .menu-utama {
