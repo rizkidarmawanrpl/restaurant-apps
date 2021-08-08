@@ -53,11 +53,38 @@ class App {
     });
   }
 
+  _customScroll() {
+    const html = this._html;
+    const { body } = document;
+
+    body.scrollTop = 0;
+    html.scrollTop = 0;
+
+    let scrollValueOld = html.scrollTop;
+    window.onscroll = () => {
+      const scrollValueNew = html.scrollTop;
+      const header = document.querySelector('header');
+
+      if (scrollValueOld === 0 && scrollValueNew > 0) {
+        header.classList.toggle('header-custom-scroll');
+      }
+      if (scrollValueOld > 0 && scrollValueNew === 0) {
+        header.classList.remove('header-custom-scroll');
+      }
+
+      scrollValueOld = scrollValueNew;
+    };
+  }
+
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
+
     this._content.innerHTML = await page.render();
     await page.afterRender();
+
+    this._html = document.documentElement;
+    this._customScroll();
   }
 }
 

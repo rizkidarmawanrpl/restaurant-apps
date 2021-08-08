@@ -20,6 +20,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
   color: var(--theme-color-black);
+  padding-top: 103px;
 }
 
 /*
@@ -90,16 +91,20 @@ body {
 /*
  * Header
  */
-
+.mainheader {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px var(--theme-color-yellow) solid;
+  z-index: 999;
+}
 .container__header {
   display: grid;
   grid-template-columns: 25% 75%;
-  position: fixed;
-  top: 0;
   background-color: white;
   width: 100%;
-  z-index: 999;
-  border-bottom: 1px var(--theme-color-yellow) solid;
+  margin: 0 auto;
 }
 
 .header {
@@ -224,7 +229,7 @@ hero-bar {
   display: block;
   width: 100%;
   height: auto;
-  padding-top: 56px;
+  // padding-top: 56px;
 }
 
 .hero {
@@ -253,13 +258,13 @@ hero-bar {
 .hero__title {
   color: var(--theme-color-turquoise);
   font-weight: 500;
-  font-size: 36px;
+  font-size: 3em;
 }
 
 .hero__tagline {
   color: var(--theme-color-white);
   margin-top: 16px;
-  font-size: 18px;
+  font-size: 1.6em;
   font-weight: 300;
 }
 
